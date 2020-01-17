@@ -21,5 +21,12 @@ export class BotonComponent implements OnInit {
   }
 
   //funciones
+  contando = function(numero){
+    console.log('Hemos hecho click en el boton');
 
+    if(numero < 6){
+      numero ++;
+    }
+
+  }
 }
