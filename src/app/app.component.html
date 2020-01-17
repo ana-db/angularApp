@@ -1,3 +1,42 @@
-<h1>{{title | uppercase}}</h1>
+<h1 class="text-center">{{title | uppercase}}</h1>
 
-<h2>{{subtitle | lowercase}}</h2>
+<h2 class="text-center">{{subtitle | lowercase}}</h2>
+
+{{productos | json}}
+
+<div class="row">
+
+    <!-- listado -->
+    <div class="col">
+        <!-- sacamos todos los datos del array productos con el "foreach" de json: *ngFor -->
+        <ul class="list-group">
+            <li *ngFor="let p of productos" 
+                (click)="seleccionarProducto(p)" 
+                class="list-group-item {{p==pSeleccionado ? 'active' :'' }}">
+                    <b>{{p.nombre}}</b> {{p.precio}}€
+            </li>
+        </ul>
+    </div>
+
+    <!-- detalle -->
+    <div class="col">
+        <img src="{{pSeleccionado.imagen}}" class="card-img-top" alt="{{pSeleccionado.nombre}}"><br>
+        {{pSeleccionado.nombre}}<br>
+        {{pSeleccionado.precio}}€<br>
+        {{pSeleccionado.categoria.nombre}}<br>
+        <p>Historial de precios:</p>
+        <!-- sacamos todos los datos del array historico -->
+        <ul class="list-group">
+            <li *ngFor="let h of pSeleccionado.historico" class="list-group-item">
+                {{h.fecha}}, {{h.precio}}€
+            </li>
+        </ul>
+
+            <a class="fas fa-exclamation-circle"></a>
+
+        <span *ngIf="! pSeleccionado.gluten" class="badge badge-success">Sin gluten</span>
+        <span *ngIf="pSeleccionado.gluten" class="badge badge-danger">Con gluten</span>
+
+    </div>
+
+</div>

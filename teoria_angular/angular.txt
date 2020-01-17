@@ -1,0 +1,62 @@
+UF1643 - Gestión y control de los Sistemas de información
+
+
+17/01/2020
+
+Si no tenemos instalado node, hay que descargarlo:
+https://nodejs.org/en/download/ ? descargar el LTS
+https://angular.io/ --> https://angular.io/start
+
+
+Vamos instalando los pre-requisitos siguiendo https://angular.io/guide/setup-local:
+
+npm install -g @angular/cli
+
+ng new my-app
+
+cd my-app
+ng serve --open
+
+
+
+Estructura de la aplicación:
+- package.jon es el equivalente al pom
+- .gitingnore
+- angular.json: fichero config
+- browserlist: para decir en qué navegdores se va a ejecutar
+- tsconfig: config para typescript
+
+npm i (o npm install): para instalar todas las dependencias de 1 proyecto
+
+- src:
+	- app: aplicación
+	- assets: imágenes y cosas estáticas
+- enironments:
+- favicon
+- index
+
+
+
+- instalamos bootstrap en angular (con la consola):
+	https://loiane.com/2017/08/how-to-add-bootstrap-to-an-angular-cli-project/
+	1- npm install bootstrap
+	2- npm i --save-dev bootstrap , mejor npm i --save bootstrap --> para meterlo como dependencia en package.json
+	3- Importing the CSS
+		Configure angular.json:
+	
+		"styles": [
+  		"node_modules/bootstrap/dist/css/bootstrap.min.css",
+  		"styles.scss"
+		]
+		
+		(en test y build)
+
+
+- json: 
+	- def array de 3 productos:
+	[{},
+	{},
+	{}
+]
+
+	- https://jsonlint.com/ --> es el validador de json para ir probando el código que vamos creando, al validarlo nos va sacando los errores de sintaxis que tenemos
