@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { url } from 'inspector';
+
 
 /**
  * componente principal que se carga al arrancar la app
