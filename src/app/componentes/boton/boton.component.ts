@@ -24,8 +24,18 @@ export class BotonComponent implements OnInit {
   contando = function(numero){
     console.log('Hemos hecho click en el boton');
 
-    if(this.numero < 6){
+    isSuma: Boolean;
+
+    if(this.numero < 10 && this.isSuma != false){
+      this.isSuma = true;
       this.numero ++;
+    }else{
+      this.numero --;
+      this.isSuma = false;
+    }
+
+    if(this.numero == 0){
+      this.isSuma = true;
     }
 
   }
