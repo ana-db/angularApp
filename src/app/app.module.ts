@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PruebaComponent } from './componentes/prueba/prueba.component';
 import { BotonComponent } from './componentes/boton/boton.component';
+import { HttpClientModule } from '@angular/common/http';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { BotonComponent } from './componentes/boton/boton.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule, //módulo para llamadas por http
     AppRoutingModule
   ],
   providers: [],

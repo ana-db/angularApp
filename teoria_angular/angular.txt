@@ -172,3 +172,6 @@ https://github.com/typicode/json-server --> con teoría
 
 https://www.getpostman.com/downloads/
 
+
+https://angular.io/guide/http
+
