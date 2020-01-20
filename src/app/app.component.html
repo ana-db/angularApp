@@ -35,10 +35,8 @@
             </li>
         </ul>
 
-            <a class="fas fa-exclamation-circle"></a>
-
         <span *ngIf="! pSeleccionado.gluten" class="badge badge-success">Sin gluten</span>
-        <span *ngIf="pSeleccionado.gluten" class="badge badge-danger">Con gluten</span>
+        <span *ngIf="pSeleccionado.gluten" class="badge badge-danger fas fa-exclamation-circle">Con gluten</span>
 
     </div>
 
