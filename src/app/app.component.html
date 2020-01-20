@@ -2,7 +2,7 @@
 
 <h2 class="text-center">{{subtitle | lowercase}}</h2>
 
-{{productos | json}}
+<!-- {{productos | json}} -->
 
 <app-boton></app-boton> <!-- esta línea hace de include para el botón -->
 
@@ -23,12 +23,34 @@
 
     <!-- detalle -->
     <div class="col">
+
+        <div class="card" style="width: 36rem;">
+
+            <span *ngIf="! pSeleccionado.gluten" class="badge badge-success">Sin gluten</span>
+            <span *ngIf="pSeleccionado.gluten" class="badge badge-danger fas fa-exclamation-circle">Con gluten</span>
+
+            <img class="card-img-top" src="{{pSeleccionado.imagen}}" class="card-img-top" alt="{{pSeleccionado.nombre}}">
+            <div class="card-body">
+                <h5 class="card-title">{{pSeleccionado.nombre}}</h5>
+                <p class="card-text">{{pSeleccionado.precio}}€</p>
+                <p class="card-text">{{pSeleccionado.categoria.nombre}}</p>
+                <p>Historial de precios:</p>
+                <!-- sacamos todos los datos del array historico -->
+                <ul class="list-group">
+                    <li *ngFor="let h of pSeleccionado.historico" class="list-group-item">
+                        {{h.fecha}}, {{h.precio}}€
+                    </li>
+                </ul>
+            </div>
+        </div> <!-- fin card -->
+
+        <!--
         <img src="{{pSeleccionado.imagen}}" class="card-img-top" alt="{{pSeleccionado.nombre}}"><br>
         {{pSeleccionado.nombre}}<br>
         {{pSeleccionado.precio}}€<br>
         {{pSeleccionado.categoria.nombre}}<br>
         <p>Historial de precios:</p>
-        <!-- sacamos todos los datos del array historico -->
+         sacamos todos los datos del array historico 
         <ul class="list-group">
             <li *ngFor="let h of pSeleccionado.historico" class="list-group-item">
                 {{h.fecha}}, {{h.precio}}€
@@ -37,7 +59,8 @@
 
         <span *ngIf="! pSeleccionado.gluten" class="badge badge-success">Sin gluten</span>
         <span *ngIf="pSeleccionado.gluten" class="badge badge-danger fas fa-exclamation-circle">Con gluten</span>
+        -->
 
-    </div>
+    </div> <!-- fin class col -->
 
-</div>
+</div> <!-- fin class row -->
