@@ -165,3 +165,10 @@ https://www.soapui.org/downloads/soapui.html --> SoapUI Open Source --> download
 		- uri
 		- http como framework
 			- códigos de estado http: https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP
+
+
+https://github.com/typicode/json-server --> con teoría 
+
+
+https://www.getpostman.com/downloads/
+
