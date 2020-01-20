@@ -60,3 +60,108 @@ npm i (o npm install): para instalar todas las dependencias de 1 proyecto
 ]
 
 	- https://jsonlint.com/ --> es el validador de json para ir probando el código que vamos creando, al validarlo nos va sacando los errores de sintaxis que tenemos
+
+
+------------------------------------------
+
+
+20/01/2020
+
+Servicios Web: 
+
+- Primer Servicio Web con SOAP ( xml )
+	- protocolo de comunicaciones (el SOAP) entre distintas aplicaciones
+	- WSDL (Lenguaje de Descripción de Servicios Web): representa una especie de contrato entre el proveedor y el que solicita. es el que dice cómo funciona el servicio
+	- SOAP (Simple Object Access Protocol) --> https://es.wikipedia.org/wiki/Simple_Object_Access_Protocol
+		-  W3C
+		- son objetos simples basados en xml
+		- estructura de intercambio de mensajes (foto drcha)
+		- Características
+			- Este protocolo está basado en XML y se conforma de tres partes:
+				Sobre (envelope): el cual define qué hay en el mensaje y cómo procesarlo.
+				Conjunto de reglas de codificación para expresar instancias de tipos de datos.
+				La Convención para representar llamadas a procedimientos y respuestas.
+			- El protocolo SOAP tiene tres características principales:
+				Extensibilidad (seguridad y WS-routing son extensiones aplicadas en el desarrollo).
+				Neutralidad (bajo protocolo de transporte TCP puede ser utilizado sobre cualquier protocolo de aplicación como HTTP, SMTP o JMS).
+				Independencia (permite cualquier modelo de programación).
+			- Estructura del mensaje
+			- Ejemplos de mensajes SOAP:
+
+llamada/petición: 
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+     <getProductDetails xmlns="http://warehouse.example.com/ws">
+       <productId>827635</productId>
+     </getProductDetails>
+   </soap:Body>
+</soap:Envelope>
+
+la cabecera no es obigatoria
+
+respuesta del proveedor:
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+     <getProductDetailsResponse xmlns="http://warehouse.example.com/ws">
+       <getProductDetailsResult>
+         <productName>Toptimate 3-Piece Set</productName>
+         <productId>827635</productId>
+         <description>3-Piece luggage set.  Black Polyester.</description>
+         <price>96.50</price>
+         <inStock>true</inStock>
+       </getProductDetailsResult>
+     </getProductDetailsResponse>
+   </soap:Body>
+ </soap:Envelope>
+
+		- Cómo funciona (gráfico cómo interactúa un conjunto de Servicios Web)
+			- el usuario se conecta al descriptor (wsdl) en lugar de conectarse directamente a la base de datos
+	
+	- ej. web service https://si.ua.es/es/servicios-web/serviciosweb/publicos/publicos.html
+		descriptor --> https://cvnet.cpd.ua.es/servicioweb/publicos/pub_gral.asmx?WSDL
+
+el siguiente objeto es de tipo completo y está formado por datos de tipo string
+<s:complexType name="ClaseAlojamiento">
+<s:sequence>
+<s:element minOccurs="0" maxOccurs="1" name="idalojamiento" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="contacto" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="precio" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="fecha" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="observaciones" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="idtipo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="descripciontipo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="codigotipo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="idregimen" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="descripcionregimen" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="codigoregimen" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="idzona" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="descripcionzona" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="fechaalta" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="latitud" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="longitud" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="habitaciones" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="plazas" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="urlinfo" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="urladicional" type="s:string"/>
+<s:element minOccurs="0" maxOccurs="1" name="emailcontacto" type="s:string"/>
+</s:sequence>
+</s:complexType>
+
+
+para descargar SOAP UI: 
+https://www.soapui.org/downloads/soapui.html --> SoapUI Open Source --> download
+
+	en eclipse creamos proyectos: ClienteSOAP_UA (ej de web service client), WSFrases (ej de web service)
+
+
+
+	- Crear un servicio (WSFrases)
+	- Servicio Web Rest ( Json ) - vídeo teórico
+		- SW para desacoplar el cliente del backend
+		- api rest buena características
+		- modelos rest
+		- uri
+		- http como framework
+			- códigos de estado http: https://es.wikipedia.org/wiki/Anexo:C%C3%B3digos_de_estado_HTTP
