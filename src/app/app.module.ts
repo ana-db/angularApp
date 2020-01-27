@@ -8,7 +8,8 @@ import { BotonComponent } from './componentes/boton/boton.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { ArraysComponent } from './paginas/arrays/arrays.component';
-import { NavbarComponent } from './componentes/navbar/navbar.component';    //módulo para llamadas por http
+import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { ProductosComponent } from './paginas/productos/productos.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';    //m�
     BotonComponent,
     InicioComponent,
     ArraysComponent,
-    NavbarComponent
+    NavbarComponent,
+    ProductosComponent
   ],
   imports: [
     BrowserModule,
