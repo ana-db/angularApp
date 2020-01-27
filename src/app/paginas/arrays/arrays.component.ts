@@ -16,7 +16,7 @@ export class ArraysComponent implements OnInit {
     console.trace(`ArraysComponent constructor`);
 
     this.total = 0;
-
+ 
     this.frutas = [
       {"nombre": "fresa", "precio": 2.45},
       {"nombre": "pera", "precio": 3.50},

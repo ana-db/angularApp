@@ -202,3 +202,7 @@ https://angular.io/guide/http
 	- ES5: ecma scritp, se encarga de definir cómo funciona javascript
 
 - Trabajando con Arrays
+
+- Single-page application --> https://es.wikipedia.org/wiki/Single-page_application
+
+para crear componentes en angular: C:\0396\angularApp\angularApp>ng g c paginas/inicio
