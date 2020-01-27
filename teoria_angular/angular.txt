@@ -175,3 +175,30 @@ https://www.getpostman.com/downloads/
 
 https://angular.io/guide/http
 
+
+-------------------------------------------------------------
+
+
+27/01/2020
+
+- JavaScript - AJAX Asynchronous JavaScript And XMLPágina
+	- petición: acceso a los datos se realiza medianteXMLHttpRequest, objeto disponible en los navegadores actuales.
+	- asíncrono: hacemos la petición y nos devuelve datos sin tener que cargar toda la página
+	- Problemas e Inconvenientes
+		- Las páginas creadas dinámicamente mediante peticiones sucesivas AJAX, no son registradas de forma automática en el historial del navegador
+		- Los motores de búsqueda no analizan JavaScript. La información en la página dinámica no se almacena en los registros del buscador.
+		- Hay problemas usando Ajax entre nombres de dominios, a esto se le conoce como Same Origin Policy o Política del Mismo Origen, lo cual es una medida de seguridad que puede ser solucionada con Cross-Origin Resource Sharing (CORS). --> desde 1 dominio no se puede llamar a otro para cargarlo, sólo desde javascript
+		Se soluciona con las 3 líneas que añadimos en el service (o filtro)
+		- Dependiendo de cómo se desarrolle el sitio web, puedes mejorar o empeorar la carga en el servidor. Ajax puede ayudar al servidor a evitar la fase de renderización de HTML, dejándole ese trabajo al cliente, pero también puede sobrecargar al servidor si se hace varias llamadas a Ajax.
+	- ¿Cuándo usar AJAX?
+		- Reemplazar partes de la página que requieran una actualización constante o por una acción del usuario. --> actualiza sólo una parte de la página (ej para completar el buscador hecho con ajax: https://jqueryui.com/autocomplete/)
+
+- Ejercs optativos para ampliar JavaScritp (30 ejercicios vanilla javascript y FreeCodeCampURL)
+
+- Curso JavaScript ES6 --> videos
+
+- TypeScript
+	- esquema círculos
+	- ES5: ecma scritp, se encarga de definir cómo funciona javascript
+
+- Trabajando con Arrays
