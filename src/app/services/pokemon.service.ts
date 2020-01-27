@@ -4,14 +4,14 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class PokemonService {
+export class PokemonService implements IPokemonService {
 
   constructor(private http: HttpClient) { 
-    console.trace('PolemonService constructor');
+    console.trace('PokemonService constructor');
   }
 
   getPokemon(){
-    const url = 'https://pokeapi.co/api/v2/pokemon/1/';
+    const url = 'https://pokeapi.co/api/v2/pokemon/4/';
     console.trace('PokemonService getPokemon ' + url);
     return this.http.get(url);
   }
@@ -19,6 +19,7 @@ export class PokemonService {
   getAll() {
     throw new Error("Method not implemented.");
   }
+  
   getById( id: number ) {
     throw new Error("Method not implemented.");
   }

@@ -2,7 +2,7 @@ interface IPokemonService {
 
     getAll();
 
-    getById( idPokemon: number );
+    getById( idPokemon: number ); 
 
     getByName( idPokemon: string );
 
