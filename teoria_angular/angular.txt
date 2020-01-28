@@ -211,11 +211,12 @@ para crear componentes en angular: C:\0396\angularApp\angularApp>ng g c paginas/
 
 28/01/2020
 
-- Trabajando con Arrays
+- Trabajando con Arrays (programación funcional)
 	- map, filter, find y reduce --> sirven para trabajar con una colección de datos
 	map: obtenemos otra colección de datos transformada a partir de la inicial
 	filter: hace un filtro de la colección de datos y saca ese resultado
 	reduce: devuelve un objeto a partir del array inicial, es decir, reduce los datos a uno solo
+	find: busca el 1er objeto que cumple una condición
 
 	ver imagen google: map filter find reduce
 

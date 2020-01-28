@@ -85,16 +85,16 @@ export class ArraysComponent implements OnInit {
     //Buscar 1a fruta verde (find()):
     this.primeraFrutaVerde = this.frutas.find(el => el.colores.includes('verde'));
 
-    //Array de colores sin colores repetidos:
+    //Array de colores sin colores repetidos (usando filter o usando concat):
     //this.colores = this.frutas.map( el => el.colores ); //así se repiten
-    this.colores = this.frutas.map( el => el.colores ).filter( color => color.includes('roja') && color.includes('amarillo') && color.includes('verde') );
+    //this.colores = this.frutas.map( el => el.colores ).filter( color => color.includes('roja') && color.includes('amarillo') && color.includes('verde') );
 
-    /*
-    this.colores = this.frutas.reduce( (p, c) => {
-        console.log(...c.colores);
-        return [p, ...c.colores];
-    }, [] );
-    */
+    this.colores = this.frutas.reduce( (p, c, i, a) => {
+      return p.concat(c.colores);
+      }, [] ).filter( (el, index, array) => {
+          console.debug(el, index, array);
+          return array.indexOf(el) === index;
+    });
 
     /*
     //colores en modo extendido para poder depurar (sin terminar):
@@ -108,7 +108,7 @@ export class ArraysComponent implements OnInit {
       }, 0 )
       */
   
-    }
+  }
     
 
 }
