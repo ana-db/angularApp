@@ -9,7 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './paginas/inicio/inicio.component';
 import { ArraysComponent } from './paginas/arrays/arrays.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
-import { ProductosComponent } from './paginas/productos/productos.component';    //módulo para llamadas por http
+import { ProductosComponent } from './paginas/productos/productos.component';
+import { PokemonRestComponent } from './paginas/pokemon-rest/pokemon-rest.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProductosComponent } from './paginas/productos/productos.component';   
     InicioComponent,
     ArraysComponent,
     NavbarComponent,
-    ProductosComponent
+    ProductosComponent,
+    PokemonRestComponent
   ],
   imports: [
     BrowserModule,
