@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { findReadVarNames } from '@angular/compiler/src/output/output_ast';
+import { createTokenForExternalReference } from '@angular/compiler/src/identifiers';
 
 @Component({
   selector: 'app-arrays',
@@ -22,6 +23,13 @@ export class ArraysComponent implements OnInit {
 
   constructor() { 
     console.trace(`ArraysComponent constructor`);
+
+    //ejemplo rápido con map (https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map):
+    var numbers = [1, 5, 10, 15];
+    var doubles = numbers.map((el, index, lista) => el * 2);
+    console.debug(numbers);
+    console.debug(doubles);
+    var mayores = numbers.filter((el, index, lista) => el > 5);
 
     //inicialización de variables:
     this.total = 0; //necesitamos poner this para indicar el ámbito de la variable y que podamos acceder
