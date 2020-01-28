@@ -201,8 +201,24 @@ https://angular.io/guide/http
 	- esquema círculos
 	- ES5: ecma scritp, se encarga de definir cómo funciona javascript
 
-- Trabajando con Arrays
-
 - Single-page application --> https://es.wikipedia.org/wiki/Single-page_application
 
 para crear componentes en angular: C:\0396\angularApp\angularApp>ng g c paginas/inicio
+
+
+-------------------------------------------------------------
+
+
+28/01/2020
+
+- Trabajando con Arrays
+	- map, filter, find y reduce --> sirven para trabajar con una colección de datos
+	map: obtenemos otra colección de datos transformada a partir de la inicial
+	filter: hace un filtro de la colección de datos y saca ese resultado
+	reduce: devuelve un objeto a partir del array inicial, es decir, reduce los datos a uno solo
+
+	ver imagen google: map filter find reduce
+
+	- Reducción de Arrays
+		- reduce pasa la devolución de llamada cuatro argumentos: valor actual, valor anterior, índice actual, array con el que se llama a reduce. No siempre tienen que aparecer estos 4 argumentos, el 3ero y 3l 4o son opcionales
+		- reduce en la práctica
