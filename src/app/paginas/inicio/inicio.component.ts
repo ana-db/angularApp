@@ -19,7 +19,7 @@ export class InicioComponent implements OnInit {
 
     console.trace('InicioComponent ngOnInit');
 
-    this.pokemonService.getPokemon().subscribe(
+    this.pokemonService.getPokemon('charmander').subscribe(
       data => {
         console.debug('petición ok %o' , data);
         this.pokemon = data;
