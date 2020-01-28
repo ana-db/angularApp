@@ -8,14 +8,11 @@ https://nodejs.org/en/download/ ? descargar el LTS
 https://angular.io/ --> https://angular.io/start
 
 
-Vamos instalando los pre-requisitos siguiendo https://angular.io/guide/setup-local:
-
-npm install -g @angular/cli
-
-ng new my-app
-
-cd my-app
-ng serve --open
+Vamos instalando los pre-requisitos siguiendo https://angular.io/guide/setup-local (consola visual studio):
+	1) instalamos: npm install -g @angular/cli
+	2) creamos app en angular: ng new my-app
+	3) nos situamos en el directorio: cd my-app
+	4) abrimos el servidor de la aplicación: ng serve --open
 
 
 
@@ -70,25 +67,35 @@ npm i (o npm install): para instalar todas las dependencias de 1 proyecto
 Servicios Web: 
 
 - Primer Servicio Web con SOAP ( xml )
+	- Los WebServices son programas que permiten el intercambio de datos entre otros programas que pueden estar escritos en cualquier lenguaje y montados en cualquier entorno.
 	- protocolo de comunicaciones (el SOAP) entre distintas aplicaciones
 	- WSDL (Lenguaje de Descripción de Servicios Web): representa una especie de contrato entre el proveedor y el que solicita. es el que dice cómo funciona el servicio
 	- SOAP (Simple Object Access Protocol) --> https://es.wikipedia.org/wiki/Simple_Object_Access_Protocol
-		-  W3C
+		- W3C (World Wide Web Consortium)
 		- son objetos simples basados en xml
-		- estructura de intercambio de mensajes (foto drcha)
+		- estructura de intercambio de mensajes (foto drcha): envelope, header y body
 		- Características
+			- SOAP es un paradigma de mensajería de una dirección sin estado
 			- Este protocolo está basado en XML y se conforma de tres partes:
-				Sobre (envelope): el cual define qué hay en el mensaje y cómo procesarlo.
-				Conjunto de reglas de codificación para expresar instancias de tipos de datos.
-				La Convención para representar llamadas a procedimientos y respuestas.
-			- El protocolo SOAP tiene tres características principales:
-				Extensibilidad (seguridad y WS-routing son extensiones aplicadas en el desarrollo).
-				Neutralidad (bajo protocolo de transporte TCP puede ser utilizado sobre cualquier protocolo de aplicación como HTTP, SMTP o JMS).
-				Independencia (permite cualquier modelo de programación).
+				- Sobre (envelope): define qué hay en el mensaje y cómo procesarlo.
+				- Conjunto de reglas de codificación para expresar instancias de tipos de datos.
+				- La Convención para representar llamadas a procedimientos y respuestas.
+			- El protocolo SOAP tiene 3 características principales:
+				- Extensibilidad (seguridad y WS-routing son extensiones aplicadas en el desarrollo).
+				- Neutralidad (bajo protocolo de transporte TCP puede ser utilizado sobre cualquier protocolo de aplicación como HTTP, SMTP o JMS).
+				- Independencia (permite cualquier modelo de programación).
 			- Estructura del mensaje
+				Un mensaje SOAP es un documento XML ordinario con la siguiente estructura:
+				- Envelope (obligatoria): raíz que de la estructura, es la parte que identifica al mensaje SOAP como tal.
+				- Header: esta parte es un mecanismo de extensión ya que permite enviar información relativa a cómo debe ser procesado el mensaje. 
+					Es una herramienta para que los mensajes puedan ser enviados de la forma más conveniente para las aplicaciones. 
+					Está compuesto por "Header Blocks" que delimitan las unidades de información necesarias para el header.
+				- Body (obligatoria): contiene la información relativa a la llamada y la respuesta.
+				- Fault: bloque que contiene información relativa a errores que se hayan producido durante el procesado del mensaje y el envío desde el "SOAP Sender" hasta el "Ultimate SOAP Receiver". 
+			
 			- Ejemplos de mensajes SOAP:
 
-llamada/petición: 
+1) llamada/petición (el cliente solicita info sobre un producto a un proveedor): 
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
      <getProductDetails xmlns="http://warehouse.example.com/ws">
@@ -99,7 +106,7 @@ llamada/petición:
 
 la cabecera no es obigatoria
 
-respuesta del proveedor:
+2) respuesta del proveedor:
 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
    <soap:Body>
      <getProductDetailsResponse xmlns="http://warehouse.example.com/ws">
@@ -155,8 +162,6 @@ https://www.soapui.org/downloads/soapui.html --> SoapUI Open Source --> download
 
 	en eclipse creamos proyectos: ClienteSOAP_UA (ej de web service client), WSFrases (ej de web service)
 
-
-
 	- Crear un servicio (WSFrases)
 	- Servicio Web Rest ( Json ) - vídeo teórico
 		- SW para desacoplar el cliente del backend
@@ -183,27 +188,41 @@ https://angular.io/guide/http
 
 - JavaScript - AJAX Asynchronous JavaScript And XMLPágina
 	- petición: acceso a los datos se realiza medianteXMLHttpRequest, objeto disponible en los navegadores actuales.
-	- asíncrono: hacemos la petición y nos devuelve datos sin tener que cargar toda la página
-	- Problemas e Inconvenientes
-		- Las páginas creadas dinámicamente mediante peticiones sucesivas AJAX, no son registradas de forma automática en el historial del navegador
+	- asíncrono: hacemos la petición y nos devuelve datos sin tener que recargar toda la página 
+	(porque estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios mientras se mantiene la comunicación asíncrona con el servidor en segundo plano)
+	- JavaScript es el lenguaje interpretado (scripting language) en el que normalmente se hacen las funciones de llamada de Ajax,
+	 mientras que el acceso a los datos se realiza mediante XMLHttpRequest
+	
+	- Problemas e Inconvenientes:
+		- Las páginas creadas dinámicamente mediante peticiones sucesivas AJAX, no se registran automáticamente en el historial del navegador
 		- Los motores de búsqueda no analizan JavaScript. La información en la página dinámica no se almacena en los registros del buscador.
-		- Hay problemas usando Ajax entre nombres de dominios, a esto se le conoce como Same Origin Policy o Política del Mismo Origen, lo cual es una medida de seguridad que puede ser solucionada con Cross-Origin Resource Sharing (CORS). --> desde 1 dominio no se puede llamar a otro para cargarlo, sólo desde javascript
+		- Hay problemas usando Ajax entre nombres de dominios, a esto se le conoce como Same Origin Policy o Política del Mismo Origen, 
+		lo cual es una medida de seguridad que puede ser solucionada con Cross-Origin Resource Sharing (CORS). --> desde 1 dominio no se puede llamar a otro para cargarlo, sólo desde javascript
 		Se soluciona con las 3 líneas que añadimos en el service (o filtro)
-		- Dependiendo de cómo se desarrolle el sitio web, puedes mejorar o empeorar la carga en el servidor. Ajax puede ayudar al servidor a evitar la fase de renderización de HTML, dejándole ese trabajo al cliente, pero también puede sobrecargar al servidor si se hace varias llamadas a Ajax.
+		- Dependiendo de cómo se desarrolle el sitio web, puedes mejorar o empeorar la carga en el servidor. 
+		Ajax puede ayudar al servidor a evitar la fase de renderización de HTML, dejándole ese trabajo al cliente, 
+		pero también puede sobrecargar al servidor si se hace varias llamadas a Ajax.
+	
 	- ¿Cuándo usar AJAX?
-		- Reemplazar partes de la página que requieran una actualización constante o por una acción del usuario. --> actualiza sólo una parte de la página (ej para completar el buscador hecho con ajax: https://jqueryui.com/autocomplete/)
+		- Reemplazar partes de la página que requieran una actualización constante o por una acción del usuario. -->
+			--> actualiza sólo una parte de la página (ej para completar el buscador hecho con ajax: https://jqueryui.com/autocomplete/)
+		- Enviar peticiones al servidor que no devuelvan grandes cantidades de información
 
 - Ejercs optativos para ampliar JavaScritp (30 ejercicios vanilla javascript y FreeCodeCampURL)
 
-- Curso JavaScript ES6 --> videos
+- Curso JavaScript ES6 --> videos youtube ("Curso de ES6 Javascript 01 - Let vs Var" y siguientes)
 
 - TypeScript
+	- es un lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft
+	- se puede usar para desarrollar aplicaciones JavaScript que se ejecutarán en el cliente o en el servidor (Node.js), o tambien para frotend (Angular).
+	- se trata de un superconjunto de Javascript, es decir, amplía Javascript con una nueva sintaxis que añade, entre otras cosas, el tipado estático opcional, genéricos, decoradores y elementos de POO como interfaces o property accessors.
+	- TypeScript compila código JavaScript que se ejecuta en cualquier navegador, host, sistema operativo o motor de JavaScript que admita ECMAScript 3 (o más reciente). --> ES6 o ECMAScript2015
 	- esquema círculos
 	- ES5: ecma scritp, se encarga de definir cómo funciona javascript
 
 - Single-page application --> https://es.wikipedia.org/wiki/Single-page_application
 
-para crear componentes en angular: C:\0396\angularApp\angularApp>ng g c paginas/inicio
+comando para crear componentes en angular desde la consola: C:\0396\angularApp\angularApp>ng g c paginas/inicio
 
 
 -------------------------------------------------------------
