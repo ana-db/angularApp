@@ -10,10 +10,12 @@ import { PokemonService } from 'src/app/services/pokemon.service';
 export class PokemonRestComponent implements OnInit {
 
   pokemon: Pokemon;
+  mensaje: string;
 
   constructor( private pokemonService: PokemonService ) { //inyectamos el servicio pokemon
     console.trace('PokemonRestComponent constructor');
 
+    this.mensaje = ''; //similar a null, pero en javascript se usa undefined
     this.pokemon = new Pokemon('pikachu');
     //this.pokemon.nombre = ''; //setter
     
@@ -36,9 +38,13 @@ export class PokemonRestComponent implements OnInit {
           this.pokemon.nombre = data.name; //data es un objeto que tiene toda la colección de datos del pokemon y lo que vamos haciendo es coger los que nos van interesando
           this.pokemon.imagen = data.sprites.front_default; //sprites es un array con todas las imagenes del pokemon
           this.pokemon.id = data.id;
+
+          this.mensaje = 'Pokemon ' + this.pokemon.nombre + ' cargado correctamente desde https://pokeapi.co/';
       },
       error => {
           console.warn('peticion erronea data o%', error);
+
+          this.mensaje = 'No existe el Pokemon'
       },
       () => {
           console.trace('esto se hace siempre, tanto si funciona como si hay un error');
