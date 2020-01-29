@@ -3,6 +3,8 @@ export class Pokemon {
     private _id: number;
     private _imagen: string;
     private _nombre: string;
+    private _habilidad: string;
+    
 
     //constructor:
     constructor(nombre: string) {
@@ -34,6 +36,14 @@ export class Pokemon {
     
     public set id(value: number) {
         this._id = value;
+    }
+
+    public get habilidad(): string {
+        return this._habilidad;
+    }
+    
+    public set habilidad(value: string) {
+        this._habilidad = value;
     }
 
 }
