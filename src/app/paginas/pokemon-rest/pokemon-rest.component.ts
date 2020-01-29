@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Pokemon } from 'src/app/model/pokemon';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { stringify } from 'querystring';
+import { splitAtColon } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-pokemon-rest',
@@ -17,7 +18,7 @@ export class PokemonRestComponent implements OnInit {
     console.trace('PokemonRestComponent constructor');
 
     this.mensaje = ''; //similar a null, pero en javascript se usa undefined
-    this.pokemon = new Pokemon('pikachu');
+    this.pokemon = new Pokemon('');
     //this.pokemon.nombre = ''; //setter
     
     console.debug(this.pokemon);
@@ -41,7 +42,23 @@ export class PokemonRestComponent implements OnInit {
           this.pokemon.id = data.id;
 
           this.mensaje = 'Pokemon ' + this.pokemon.nombre + ' cargado correctamente desde https://pokeapi.co/';
-      
+
+          //2) conseguir la habilidad del pokemon a través de su id y haciendo una llamada al servicio:
+          const habilidadesNames = data.abilities.map( el => el.ability.name );
+          console.debug('habilidades en ingles %o', habilidadesNames);
+
+          habilidadesNames.forEach( habilidad => {
+            // conseguir su habilidad en castellano
+            this.pokemonService.getHabilidad( habilidad ).subscribe(
+              json => {
+                console.debug('habilidad %o' ,  json);
+                const habilidadCastellano = json.names.find( el => el.language.name === 'es' );
+                console.debug('recupera habiliada en castellano %o', habilidadCastellano);
+                this.pokemon.habilidades.push( habilidadCastellano.name );
+            });
+          });
+
+          /* con este código sacamos la habilidad que tiene el mismo id que el pokemon (y esa habilidad no tiene por qué ser del pokemon)
           //2) conseguir la habilidad del pokemon a través de su id y haciendo una llamada al servicio:
           this.pokemonService.getHabilidad( this.pokemon.id ).subscribe(
             data => {
@@ -60,6 +77,7 @@ export class PokemonRestComponent implements OnInit {
               console.trace('esto se hace siempre, tanto si funciona como si hay un error');
             }
           );
+          */
       
       },
       error => {

@@ -3,14 +3,17 @@ export class Pokemon {
     private _id: number;
     private _imagen: string;
     private _nombre: string;
-    private _habilidad: string;
-    
+    //private _habilidad: string;
+    private _habilidades: Array<string>; //guardamos todas las habilidades del pokemon
+
 
     //constructor:
     constructor(nombre: string) {
         this._id = 0;
         this.nombre = nombre;
         this._imagen = 'https://cdn.pixabay.com/photo/2019/11/27/14/06/pokemon-4657023_960_720.png';
+        //this._habilidad = '';
+        this._habilidades = [];
     }
 
     //getters y setters:
@@ -38,12 +41,13 @@ export class Pokemon {
         this._id = value;
     }
 
-    public get habilidad(): string {
-        return this._habilidad;
+    public get habilidades(): Array<string> {
+        return this._habilidades;
     }
-    
-    public set habilidad(value: string) {
-        this._habilidad = value;
+
+    public set habilidades(value: Array<string>) {
+        this._habilidades = value;
     }
+   
 
 }

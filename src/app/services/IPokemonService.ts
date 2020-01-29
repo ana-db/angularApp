@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 
-interface IPokemonService {
+export interface IPokemonService {
 
     getAll();
 
@@ -17,8 +17,8 @@ interface IPokemonService {
 
     /**
      * Recupera un JSON con las caracteristicas de un Pokemon
-     * @param id : number identificador del pokemon
-     * @see GET /api/v2/characteristic/{id}/
+     * @param nombreHabilidad : nombre de la habilidad del pokemon en inglés
+     * @see GET /api/v2/characteristic/{name}/
      */
-    getHabilidad(id: number): Observable<any>;
+    getHabilidad(nombreHabilidad: number): Observable<any>;
 }

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'; //relacionado con la programación reactiva
-//import { IPokemonService } from './Ipokemon.service';
+import { IPokemonService } from './IPokemonService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PokemonService { //implements IPokemonService {
+export class PokemonService implements IPokemonService {
   
   constructor(private http: HttpClient) { 
     console.trace('PokemonService constructor');
@@ -18,8 +18,8 @@ export class PokemonService { //implements IPokemonService {
     return this.http.get(url); //devuelve un objeto de tipo observable: hace una llamada, observa y en algún momento devuelve los datos
   }
 
-  getHabilidad(id: number): Observable<any> {
-    const url = `https://pokeapi.co/api/v2/ability/${id}/`;
+  getHabilidad(nombreHabilidad : number): Observable<any> {
+    const url = `https://pokeapi.co/api/v2/ability/${nombreHabilidad}/`;
     console.trace('PokemonService getHabilidad ' + url);
     return this.http.get(url); //devuelve un objeto de tipo observable: hace una llamada, observa y en algún momento devuelve los datos
   }
