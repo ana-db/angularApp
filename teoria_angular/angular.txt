@@ -242,3 +242,55 @@ comando para crear componentes en angular desde la consola: C:\0396\angularApp\a
 	- Reducción de Arrays
 		- reduce pasa la devolución de llamada cuatro argumentos: valor actual, valor anterior, índice actual, array con el que se llama a reduce. No siempre tienen que aparecer estos 4 argumentos, el 3ero y 3l 4o son opcionales
 		- reduce en la práctica
+
+
+-------------------------------------------------------------
+
+
+31/01/2020
+
+- Servicios Web SOAP vs REST
+	- Introducción
+		- comunicar diferentes aplicaciones
+		- desacoplar backend
+
+	- Inconvenientes
+		- xml más lento porque tiene una estructura y se tiene que validar. Su parte buena es que proporciona más seguridad
+		- hay que habilitar post en rest
+
+	- Razones para crear servicios Web
+		- SOAP es un web service con xml 
+			- llamadas a universidad alicante
+			- montamos un cliente soap
+		- si se quiere migrar el web service, se habilitan nuevas urls añadiendo un v2 por ej (y se sigue manteniendo v1, ej apipokemon), para evitar que los clientes conectados se caigan si cambiamos directamente la url
+
+	- SOAP vs REST
+		- SOA: estructura orientada a servir datos. Con SOA llamaríamos sólo 1 vez si tenemos que usar varios dao distintos
+
+		- Qué es SOAP: 
+			- sólo formato XML
+			- trabaja con http pero también puede hacerlo con otros portocolos
+		
+		- Qué es REST:
+			- normalmente devuelve JSON aunque también puede devolver otros tipos (csv...)
+			- métodos de HTTP para comunicarse, como lo son GET, POST, PUT, DELETE, PATCH y a la vez, utiliza los códigos de respuesta nativos de HTTP (404,200,204,409)
+			- Header Content-Type define el tipo de datos que enviamos, por eso REST es tan flexible que permite transmitir prácticamente cualquier tipo de datos
+			- JSON (JavaScript Object Notation) es interpretado de forma natural por JavaScript
+			- REST debería ser utilizado para obtener datos en aplicaciones WEB que funcionan principalmente con el Modelo MVC del lado del cliente, es decir, que todos los procesamientos se realizan desde el navegador y que solo va al backend para obtener o actualiza la base de datos
+		
+		- Conclusiones:
+			- IoT: usa xml (soap) porque es más rápido que rest
+			- Ventajas REST vs Ventajas SOAP
+				- rest usa distintos tipos, principalmente json || soap sólo xml
+				- rest sólo síncrono || soap puede ser Sincrono y Asincrono
+			
+
+hay servicios web públicos (noticias, alojamientos...) y privados (zona de alumnos a la que habrá que acceder registrándose)
+	- https://si.ua.es/es/servicios-web/serviciosweb/publicos/publicos.html
+	- descriptor --> https://cvnet.cpd.ua.es/servicioweb/publicos/pub_gral.asmx?WSDL
+		- <s:schema elementFormDefault="qualified" targetNamespace="http://UASI/WS_GRAL.wsdl">
+			schema: define si las etiquetas están bien puestas
+		- fichero .xsd : para definir esquema
+		- fichero .dtd: define cómo tienen que estar formadas las eiquetas de html
+
+
