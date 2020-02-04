@@ -12,7 +12,8 @@ import { ArraysComponent } from './paginas/arrays/arrays.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ProductosComponent } from './paginas/productos/productos.component';
 import { PokemonRestComponent } from './paginas/pokemon-rest/pokemon-rest.component';
-import { EstilosComponent } from './paginas/estilos/estilos.component';    //módulo para llamadas por http
+import { EstilosComponent } from './paginas/estilos/estilos.component';
+import { JuegoComponent } from './paginas/juego/juego.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EstilosComponent } from './paginas/estilos/estilos.component';    //mó
     NavbarComponent,
     ProductosComponent,
     PokemonRestComponent,
-    EstilosComponent
+    EstilosComponent,
+    JuegoComponent
   ],
   imports: [
     BrowserModule,
