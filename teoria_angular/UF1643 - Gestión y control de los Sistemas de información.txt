@@ -113,3 +113,12 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 		- Mixins: define una función y se la aplica a un componente 
 		- Extend/Inheritance
 	
+
+
+
+
+- Angular Curso Practico Completo, Desde Cero, Para Principiantes
+	https://www.youtube.com/watch?v=Sx_2dOYOtes
+
+- Angular Pagina Oficial:
+	
