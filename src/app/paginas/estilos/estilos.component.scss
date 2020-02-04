@@ -1,0 +1,68 @@
+//soporta comentarios de linea, los cuales no se ven en .CSS
+
+//documnetación oficial --> https://sass-lang.com/guide
+
+//Variables:
+$color_pink:#da9393;
+$color_green:#00FF00;
+$color_black:#000;
+$color_red: #FF0000;
+
+h1{
+    color: $color_pink; //usamos la variable que hemos creado
+}
+
+//aplicamos nesting => p code:
+p {
+    code {
+        color: $color_green;
+        background-color: $color_black;
+        padding: 2px 3px;
+    }
+}
+
+//mixins o funciones para reutilizar:
+@mixin redondear( $radio, $color ) {
+    border-radius: $radio;
+    border: 1px solid $color;
+    padding: 10px;
+}
+
+.borde10{
+    @include redondear(10px, $color_pink); //usamos mixin
+}
+
+.borde50{
+    @include redondear(50%, #FF0000);
+}
+
+//Herencia (Extend/Inheritance):
+%boton {
+    /*
+    border-radius:45%;
+    border: 3px solid $color_black;
+    */
+    @include redondear(45%, $color_black);
+    border: 3px solid;
+    padding: 10px;
+    color: white;
+    background-color: #2A272A;
+}
+
+.boton-verde {
+    @extend %boton;
+    background-color: #356840;
+    border-color: darkolivegreen;
+    &:hover { //aplicamos nesting en el pseudoselector para hacer el hover
+        background-color: rgb(73, 156, 84);
+    }
+}
+
+.boton-rojo {
+    @extend %boton;
+    background-color: rgb(190, 46, 46);
+    border-color: $color_red;
+    &:hover {
+        background-color: $color_pink;
+    }
+}

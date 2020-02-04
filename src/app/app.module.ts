@@ -10,7 +10,8 @@ import { InicioComponent } from './paginas/inicio/inicio.component';
 import { ArraysComponent } from './paginas/arrays/arrays.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { ProductosComponent } from './paginas/productos/productos.component';
-import { PokemonRestComponent } from './paginas/pokemon-rest/pokemon-rest.component';    //módulo para llamadas por http
+import { PokemonRestComponent } from './paginas/pokemon-rest/pokemon-rest.component';
+import { EstilosComponent } from './paginas/estilos/estilos.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PokemonRestComponent } from './paginas/pokemon-rest/pokemon-rest.compon
     ArraysComponent,
     NavbarComponent,
     ProductosComponent,
-    PokemonRestComponent
+    PokemonRestComponent,
+    EstilosComponent
   ],
   imports: [
     BrowserModule,

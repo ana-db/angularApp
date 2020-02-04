@@ -1,0 +1,115 @@
+UF1643 - Gestión y control de los Sistemas de información
+
+04/02/2020:
+
+
+- TypeScript:
+
+	- es un lenguaje de programación libre y de código abierto desarrollado y mantenido por Microsoft
+	- tipado estático opcional: poniendo los 2 puntitos
+	- genéricos: se hace una clase (IDAO) y cuando se herede, se indica su tipo: public class ReseniaDAO implements IDAO<Resenia>
+	- TypeScript se compila en javascript
+	- Pagina oficial: http://www.typescriptlang.org/docs/home.html
+	- Repositorio en GITHUB: https://github.com/Microsoft/TypeScript
+
+	- se puede usar para desarrollar aplicaciones JavaScript que se ejecutarán en el cliente o en el servidor (Node.js), o tambien para frotend (Angular).
+	- se trata de un superconjunto de Javascript, es decir, amplía Javascript con una nueva sintaxis que añade, entre otras cosas, el tipado estático opcional, genéricos, decoradores y elementos de POO como interfaces o property accessors.
+	- TypeScript compila código JavaScript que se ejecuta en cualquier navegador, host, sistema operativo o motor de JavaScript que admita ECMAScript 3 (o más reciente). --> ES6 o ECMAScript2015
+
+	- esquema círculos
+	- ES5: ecma scritp, se encarga de definir cómo funciona javascript
+
+	- Por qué Typescript
+		- diseñado para ejecutarse en un navegador y hacer cosas simples con html
+
+	- Watcher: escucha y cada vez que hacemos un cambio, lo coge al vuelo
+
+	- Sistema de tipos:
+		- variables con let en lugar de var:
+		
+		let myName: string = "Miguel";
+		let printName = (name: string) => {
+    			console.log(name);
+		}
+
+	- en el fichero main.js se guardan todos los ficheros compilados
+
+	- TypeScript admite los siguientes tipos de datos:
+		- String 
+		- Number
+		- Boolean: tipo de dato logico que representa verdadero o falso.
+		- Array: tipo de dato estructurado que permite almacenar una colección de elementos.
+		- Tuple: similar al array, pero con un número fijo de elementos escritos.
+		- Enum: representa al tipo enumeración. Una enumeración es una forma de dar nombres descriptivos a los conjuntos de valores numéricos
+			--> ejemplos: 
+				- https://jarroba.com/enum-enumerados-en-java-con-ejemplos/
+				- http://www.typescriptlang.org/docs/handbook/enums.html
+			son siempre ctes
+			ej. estaciones: primavera, verano, otoño, invierno y cada uno estaría identificado con un número de forma que sólo se pueda elegir uno de esos valores y ningún otro
+		- Any: indica que la variable puede ser de cualquier tipo. Es muy útil a la hora de trabajar con librerías externas.
+			se suele usar con servicios rest porque sabemos que nos devuelve un json pero no es un tipo concreto
+		- Void: indica que una función no devolverá ningún valor.
+		- Never: este tipo representa el tipo de valores que nunca se producen. Por ejemplo para indicar que una función siempre arroja una excepción o que nunca termina su ejecución.
+		- ejemplos en doc oficial --> http://www.typescriptlang.org/docs/handbook/basic-types.html
+
+	- Iteraciones:
+		
+		let list = [4, 5, 6];
+		for (let i in list) {
+   			console.log(i); // "0", "1", "2",
+		}
+		for (let i of list) {
+   			console.log(i); // "4", "5", "6"
+		}
+
+	- Módulos:
+		Otra de las características de Typescript es heredada de ECMAScript 2015: la posibilidad de crear módulos
+		no son más que una forma de encapsular código en su propio ámbito. 
+		Nos permiten agrupar nuestro código en diferentes ficheros, permitiéndonos exportarlos y utilizarlos donde los necesitemos. 
+		nos facilita la tarea de crear software más ordenado y por ende más escalable y mantenible.
+
+		TypeScript también soporta otra serie de funcionalidades como:
+
+		Clases y Objetos
+		Herencia
+		Interfaces
+		Clases Abstractas
+		Getters y Setters
+		Decoradores
+
+	- extra: Videos Youtube: Introducción al curso de TypeScript para Angular 2 en Español --> https://www.youtube.com/watch?v=vFJT8pX0eXs&list=PLBdkl5-ytBTw28OJMumO-iUxYnShbhqwO
+
+
+
+
+
+- SASS
+	- no hay que instalar nada porque ya lo tiene el propio framework
+	- https://sass-lang.com/guide
+		- sass --watch input.scss output.css --> ficheros de entrada y salida
+		- Variables
+		- ng build --prod --> genera una carpeta con un fichero para dejar en el servidor de producción (dist\angularApp)
+			- main.js --> contiene todos los componentes del desarrollo
+			- runtime --> código fuente
+			- polyfills --> plugins/parches por si algo no funciona bien nativamente
+
+C:\0396\angularApp\angularApp>ng build --prod
+Generating ES5 bundles for differential loading...
+ES5 bundle generation complete.
+
+chunk {0} runtime-es2015.edb2fcf2778e7bf1d426.js (runtime) 1.45 kB [entry] [rendered]
+chunk {0} runtime-es5.edb2fcf2778e7bf1d426.js (runtime) 1.45 kB [entry] [rendered]
+chunk {2} polyfills-es2015.2987770fde9daa1d8a2e.js (polyfills) 36.4 kB [initial] [rendered]
+chunk {3} polyfills-es5.6696c533341b95a3d617.js (polyfills-es5) 123 kB [initial] [rendered]
+chunk {1} main-es2015.c98ae739d9a85f89df4a.js (main) 255 kB [initial] [rendered]
+chunk {1} main-es5.c98ae739d9a85f89df4a.js (main) 310 kB [initial] [rendered]
+chunk {4} styles.c028f661f79f7de98b90.css (styles) 154 kB [initial] [rendered]
+Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
+
+		- Nesting
+		- Partials: es una especie de import (y está montado), es como hacer imports de pequeños cachitos de sass. 
+			Se distingue porque su nomenclatura es _partial.scss, se importa como import partial (sin _ ni extensión)
+		- Modules: para importar otro fichero de estilo en el orden en el que queramos, @use 'base';
+		- Mixins: define una función y se la aplica a un componente 
+		- Extend/Inheritance
+	
