@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -28,6 +29,7 @@ import { EstilosComponent } from './paginas/estilos/estilos.component';    //mó
   imports: [
     BrowserModule,
     HttpClientModule, //módulo para llamadas por http
+    FormsModule, //módulo para usar formularios
     AppRoutingModule
   ],
   providers: [],

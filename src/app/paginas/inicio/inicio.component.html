@@ -8,6 +8,47 @@
 
 <hr>
 
+<h2>Expresiones</h2>
+<p>Ejemplo de expresiones: 2 + 2 = {{2+2}}</p>
+
+<hr>
+
+<h2>Alterando el código de nuestro componente</h2>
+<p>Ejemplo de propiedad siempre con [ ] y las variables sin llaves dobles</p>
+<p>La propiedad <code>hidden</code> es de Angular, y también podríamos haber usado <code>ngIf</code></p>
+
+<p [hidden]="!visible">
+    Decir adiós con propiedad hidden
+</p>
+
+<p *ngIf="visible">
+    Decir adiós con ngIf
+</p>
+<button (click)="decirAdios()">Decir adiós</button>
+
+<hr>
+
+<h2>Propiedades</h2>
+
+<p>Podemos declarar propiedades al vuelo sin tener que definirlas en el componente.</p>
+<p>También podemos ejecutar eventos sin tener que definir una función.</p>
+
+<div [class]="claseSeleccionada">Frase que cambia de color al pulsar botones</div>
+<button (click)="claseSeleccionada='verde'">Color verde</button>
+<button (click)="claseSeleccionada='rojo'">Color rojo</button>
+
+<hr>
+
+<h2>Doble binding</h2>
+
+<p>Para usar banan in a box, recordar importar el modulo de <code>FormsModule</code> en app.module.ts</p>
+<label>Nombre: {{jugador}}</label>
+<br>
+<input type="text" [(ngModel)]="jugador">
+
+<hr>
+
+
 <h2>{{pokemon.name}}</h2>
 
 <img [src]="pokemon.sprites.front_default" alt="{{pokemon.name}}">
@@ -15,3 +56,6 @@
 <hr>
 
 {{ pokemon | json }}
+
+
+

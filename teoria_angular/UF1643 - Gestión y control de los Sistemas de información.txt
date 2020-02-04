@@ -149,6 +149,15 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 			el propio Angular es una dependencia
 		- Carpeta e2e: para pruebas endo to end
 	- Archivo app.module.ts
+	- Alterando el código de nuestro componente
+	- Piezas declarables en una vista
+		- propiedad, Expresión, Binding, evento
+	- Ejemplos de sintaxis utilizada en vistas de Angular 2
+		- Propiedades
+		- Doble binding: el valor está en los 2 sitios, modelo y vista
+			¿Cómo te llamas? <input type="text" [(ngModel)]="quien"> --> ese quien 
+
+
 
 
 - Angular Pagina Oficial
