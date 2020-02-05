@@ -13,11 +13,14 @@
 
 <p>Podemos crear nuestras propias directivas usando el comando <code>ng generate directive $nombre_de_nuestra_directiva</code></p>
 
-<h2>1. Primer ejercicio con directivas</h2>
-
+<h2>1. Primer ejercicio con directivas <code>appHello</code></h2>
+<!-- 
 <p appHello="pink">En esta etiqueta estamos usamos usando nuestra directiva <code>appHello</code>. Mira la consola para ver las trazas de log</p>
-
 <span appHello=teal>Usamos <code>appHello</code> en un <code>span</code></span>
+-->
+<!-- pasando varios parámetros: -->
+<p appHello colorTexto="green" colorFondo="black">En esta etiqueta estamos usamos usando nuestra directiva <code>appHello</code>. Mira la consola para ver las trazas de log</p>
+<span appHello colorTexto="pink" colorFondo="black">Usamos <code>appHello</code> en un <code>span</code></span>
 
 <hr>
 
