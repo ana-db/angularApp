@@ -20,9 +20,10 @@
 
 {{busqueda}}
 <input type="search" [(ngModel)]="busqueda" placeholder="Buscar por nombre">
+<input type="search" [(ngModel)]="busquedaTipo" placeholder="Buscar por tipo">
 
 <ul class="list-group">
-    <li *ngFor = "let animal of animales | animalesFiltro : busqueda "
+    <li *ngFor = "let animal of animales | animalesFiltro : busqueda : busquedaTipo "
         class="list-group-item">
         <img src="{{animal.Imagen}}" class="circle"> 
         <div>
