@@ -1,1 +1,42 @@
-<p>filtros works!</p>
+<h2>{{ 'Pipes o filtros' | uppercase }}</h2> <!-- ejemplo de pipe para pasar a mayúsculas-->
+
+<hr>
+
+<h3>Ejemplos de Filtros de Angular</h3>
+<a href="https://angular.io/api?type=pipe" target="_blank">API de Filtros</a><br>
+
+<pre>{{ coche | json }}</pre>
+<p>{{coche.nombre | uppercase}}</p>
+<p>{{coche.color | lowercase}}</p>
+<p>{{coche.precio | currency : 'EUR':'':'2.2-2' }} € </p>
+<p>{{coche.nombre | slice : 0 : 5 }}</p> <!-- {{ value_expression | slice : start [ : end ] }} -->
+<p>{{coche.nombre | slice : 5 }}</p>
+
+<p class="text-warning" > TODO buscar como poner locales en castellano </p>
+
+<hr>
+
+<h3>Filtrando Listas</h3>
+
+{{busqueda}}
+<input type="search" [(ngModel)]="busqueda" placeholder="Buscar por nombre">
+
+<ul class="list-group">
+    <li *ngFor = "let animal of animales | animalesFiltro : busqueda "
+        class="list-group-item">
+        <img src="{{animal.Imagen}}" class="circle"> 
+        <div>
+            <p class="nombre">{{animal.Nombre}}</p>
+            <p class="observacion">{{animal.Observacion}}</p>
+        </div>
+    </li>
+</ul>
+
+<!-- <pre>{{ animales | json }}</pre> -->
+
+<hr>
+
+<h3>Custom Filter</h3>
+<a href="https://angular.io/guide/pipes" target="_blank">Documentación Oficial</a>
+
+

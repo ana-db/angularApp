@@ -17,7 +17,8 @@ import { JuegoComponent } from './paginas/juego/juego.component';
 import { DirectivasComponent } from './paginas/directivas/directivas.component';
 import { FiltrosComponent } from './paginas/filtros/filtros.component';
 import { HelloDirective } from './directivas/hello.directive';
-import { SubrayarDirective } from './directivas/subrayar.directive';    //módulo para llamadas por http
+import { SubrayarDirective } from './directivas/subrayar.directive';
+import { AnimalesPipe } from './pipes/animales.pipe';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { SubrayarDirective } from './directivas/subrayar.directive';    //módul
     DirectivasComponent,
     FiltrosComponent,
     HelloDirective,
-    SubrayarDirective
+    SubrayarDirective,
+    AnimalesPipe
   ],
   imports: [
     BrowserModule,

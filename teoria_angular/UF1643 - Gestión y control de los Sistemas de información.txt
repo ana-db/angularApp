@@ -7,6 +7,8 @@ comandos:
 	- crear nueva app: ng new my-app
 	- abrir el servidor: ng serve --open
 	- crear componentes: ng g c paginas/inicio
+	- Crear directivas: ng g d directivas/subrayar
+	- Crear filtros: ng g pipe pipes/animales		
 
 -------------------------------------------------------------------
 
@@ -181,3 +183,35 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
 
 05/02/2020
+
+- Directivas:
+	- una directiva es una propiedad de la etiqueta de lo lleva
+	- *ngIf, *ngFor, *ngSwitch
+	- 3 tipos: 
+		Components:  son directivas con una plantilla de html.
+		Estructurales: cambian el DOM añdiendo o removiendo elementos, por jemplo *ngIf.
+		Attribute directive: cambian la apariencia de un elemento del DOM, por ejemplo NgStyle. --> hidden, disabled
+
+	- ¿Cómo creo una directiva? 
+		ng generate directive $nombre_de_nuestra_directiva --> ng g d directivas/hello
+
+		ElementRef: es una referencia al elemento html que contiene la directiva. Solo hay que saber cómo se accede --> en nuestro ejemplo sería el "p" que contiene appHello
+
+		@HostListener: Nos da la capacidad de escuchar eventos del elemento que contiene la directiva. En este caso ‘mouseenter’ y ‘mouseleave’. Justo debajo la función que se va a ejecutar cuando ocurra.
+
+
+
+
+
+- Pipes o Filtros
+	- nos permiten alterar la forma en la que se van a visualizar los datos --> transformar cosas
+	- docu oficial --> https://angular.io/guide/pipes
+	- filtros de angular --> https://angular.io/api?type=pipe
+		- UpperCasePipe --> {{ value_expression | uppercase }}
+		- CurrencyPipe  --> {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }}
+			los [ indican que es un campo opcional
+
+
+
+
+

@@ -1,0 +1,18 @@
+li{
+
+    display: flex;
+
+    .nombre{
+        font-size: 1.6rem;
+    }
+
+    .observacion{
+        font-size: 0.8rem;
+    }
+
+    .circle{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+}
