@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Button } from 'protractor';
 
 //las ctes se declaran fuera del componente:
-const TIEMPO_JUEGO = 2000; //2ms
+const TIEMPO_JUEGO = 5000; //5ms
 
 @Component({
   selector: 'app-juego',
@@ -45,14 +45,15 @@ export class JuegoComponent implements OnInit {
     console.trace('JuegoComponent jugar()' + this.jugador);
 
     this.isActivo = true; //habilitamos el boton de clicks para jugar
-    this.ranking.set(this.jugador, this.puntos); //guardamos los datos del jugador en el hashmap
-
+    
     setTimeout( () => {
       console.debug('Termina timeout');
-      
+
+      this.ranking.set(this.jugador, this.puntos); //guardamos los datos del jugador en el hashmap
       this.isActivo = false;
       this.puntos = 0;
       this.jugador = "";
+
     }, TIEMPO_JUEGO );
 
   } //fin jugar

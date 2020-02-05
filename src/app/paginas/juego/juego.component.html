@@ -9,19 +9,16 @@
 
         <hr>
 
-        <button id="botonClick" type="button" class="btn btn-success" (click)="contarClicks()">Haz click</button>
-        <p>{{puntos}}</p>
-
+        <span class="numero">{{puntos}}</span>
+        <button type="button" (click)="contarClicks()" [disabled]="!isActivo" class="btn btn-primary btn-block">Haz Click</button>
     </div>   
 
     <div class="col">
         <h2>Ranking</h2>
         <ul class="list-group">
-            <li *ngFor="let j of ranking ">
-
-            </li>
+            <li *ngFor="let j of ranking | keyvalue "
+                class="list-group-item"><b>{{j.key}}</b> {{j.value}}</li>            
         </ul>
-
     </div>
 
 </div>
