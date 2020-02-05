@@ -15,7 +15,9 @@ import { PokemonRestComponent } from './paginas/pokemon-rest/pokemon-rest.compon
 import { EstilosComponent } from './paginas/estilos/estilos.component';
 import { JuegoComponent } from './paginas/juego/juego.component';
 import { DirectivasComponent } from './paginas/directivas/directivas.component';
-import { FiltrosComponent } from './paginas/filtros/filtros.component';    //módulo para llamadas por http
+import { FiltrosComponent } from './paginas/filtros/filtros.component';
+import { HelloDirective } from './directivas/hello.directive';
+import { SubrayarDirective } from './directivas/subrayar.directive';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FiltrosComponent } from './paginas/filtros/filtros.component';    //mó
     EstilosComponent,
     JuegoComponent,
     DirectivasComponent,
-    FiltrosComponent
+    FiltrosComponent,
+    HelloDirective,
+    SubrayarDirective
   ],
   imports: [
     BrowserModule,

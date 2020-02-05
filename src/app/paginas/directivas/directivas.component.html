@@ -1,1 +1,42 @@
-<p>directivas works!</p>
+<h2>Directivas</h2>
+
+<p>Hay 3 tipos de directivas en Angular:</p>
+
+<dl>
+    <dt>Components:</dt>
+        <dd>Son directivas con una plantilla de html</dd>
+    <dt>Estructurales:</dt>
+        <dd>Cambian el DOM añdiendo o removiendo elementos, por jemplo *ngIf</dd>
+    <dt>Attribute directive:</dt>
+        <dd>Cambian la apariencia de un elemento del DOM, por ejemplo NgStyle</dd>
+</dl>
+
+<p>Podemos crear nuestras propias directivas usando el comando <code>ng generate directive $nombre_de_nuestra_directiva</code></p>
+
+<h2>1. Primer ejercicio con directivas</h2>
+
+<p appHello="pink">En esta etiqueta estamos usamos usando nuestra directiva <code>appHello</code>. Mira la consola para ver las trazas de log</p>
+
+<span appHello=teal>Usamos <code>appHello</code> en un <code>span</code></span>
+
+<hr>
+
+<h2>2. Ejercicio subrayando con directivas</h2>
+<h3>Un ejemplo del uso de la directiva SUBRAYAR <code>appSubrayar</code></h3>
+
+<label for="colorSeleccionado">Elige un color:</label><br>
+<input type="radio" name="color" (click)="colorSeleccionado='pink'" > Rosa <br> 
+<input type="radio" name="color" (click)="colorSeleccionado='orange'" > Naranja <br>
+<input type="radio" name="color" (click)="colorSeleccionado='peru'" > Peru <br>
+
+<p>
+    Elige color personalizado:
+    <input type="color" [(ngModel)]="colorSeleccionado" > 
+</p>
+
+<p appSubrayar="red">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur natus adipisci tenetur id vero distinctio consequatur asperiores neque facilis voluptatibus quod ab voluptates, voluptatum nostrum quaerat hic totam porro amet!</p>
+<!-- al usar corchetes, le pasamos una variable: -->
+<p [appSubrayar]="'green'">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur natus adipisci tenetur id vero distinctio consequatur asperiores neque facilis voluptatibus quod ab voluptates, voluptatum nostrum quaerat hic totam porro amet!</p>
+<p [appSubrayar]="colorSeleccionado">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Pariatur natus adipisci tenetur id vero distinctio consequatur asperiores neque facilis voluptatibus quod ab voluptates, voluptatum nostrum quaerat hic totam porro amet!</p>
+
+
