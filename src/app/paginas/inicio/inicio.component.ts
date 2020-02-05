@@ -22,7 +22,7 @@ export class InicioComponent implements OnInit {
     this.title = "Welcome to Angular";
     this.numeroClicks = 0;
     this.visible = false;
-    this.jugador='';
+    this.jugador="";
 
   } // fin constructor
 

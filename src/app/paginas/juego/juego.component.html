@@ -1,10 +1,27 @@
 <p>juego works!</p>
 
-<label>Nombre: {{jugador}}</label>
-<input type="text" [(ngModel)]="jugador">
-<button (click)="jugar()">Jugar</button>
+<div class="row">
 
-<br>
+    <div class="col">
+        <label>Nombre: </label>
+        <input type="text" [(ngModel)]="jugador">
+        <button type="button" class="btn btn-primary" (click)="jugar()">Jugar</button>
 
-<button (click)="contarClicks()">Haz click</button>
-<p>{{puntos}}</p>
+        <hr>
+
+        <button id="botonClick" type="button" class="btn btn-success" (click)="contarClicks()">Haz click</button>
+        <p>{{puntos}}</p>
+
+    </div>   
+
+    <div class="col">
+        <h2>Ranking</h2>
+        <ul class="list-group">
+            <li *ngFor="let j of ranking ">
+
+            </li>
+        </ul>
+
+    </div>
+
+</div>
