@@ -47,6 +47,12 @@ export const RUTAS =
         'ruta' : '/filtros',
         'nombre' : 'Filtros',
         'icono' : 'fas fa-sort-amount-down'
+    },
+
+    {
+        'ruta' : '/recetario',
+        'nombre' : 'Recetario',
+        'icono' : 'fas fa-utensils'
     }
 
 ];

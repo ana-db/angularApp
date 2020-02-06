@@ -18,7 +18,8 @@ import { DirectivasComponent } from './paginas/directivas/directivas.component';
 import { FiltrosComponent } from './paginas/filtros/filtros.component';
 import { HelloDirective } from './directivas/hello.directive';
 import { SubrayarDirective } from './directivas/subrayar.directive';
-import { AnimalesPipe } from './pipes/animales.pipe';    //módulo para llamadas por http
+import { AnimalesPipe } from './pipes/animales.pipe';
+import { RecetarioComponent } from './paginas/recetario/recetario.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AnimalesPipe } from './pipes/animales.pipe';    //módulo para llamadas
     FiltrosComponent,
     HelloDirective,
     SubrayarDirective,
-    AnimalesPipe
+    AnimalesPipe,
+    RecetarioComponent
   ],
   imports: [
     BrowserModule,
