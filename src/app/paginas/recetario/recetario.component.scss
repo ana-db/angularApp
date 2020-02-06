@@ -28,3 +28,15 @@
 .col-6 {
     padding-left: 1.75rem;
 }
+
+//posicionando el icono del gluten sobre la foto de la receta (detalle):
+.receta-relative{
+    position: relative;
+}
+
+.receta-relative .gluten-absolute{
+    position: absolute;
+    bottom: 15rem;
+    left: 19rem;
+    padding: 0 10px;
+}

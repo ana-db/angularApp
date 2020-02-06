@@ -2,14 +2,36 @@
 
 
 <div class="row">
-    <div class="col text-right">
-        <div class="form-group">           
-            <input type="search" [(ngModel)]="buscarReceta" placeholder="Buscar por receta">
-            <button type="submit" class="btn btn-secondary"><span class="fas fa-search"></span></button>
+
+    <div class="col-5">
+        <p>Cocinar Nueva Receta</p>
+    </div>
+
+    <div class="col-7 text-left">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">  
+            <label class="form-check-label" for="exampleCheck1">Recetas Sin Gluten</label>
         </div>
+    </div>
+
+</div>
+
+
+<!-- BUSCADOR -->
+<div class="row">  
+    <div class="col-5"></div> 
+    <div class="col-6 text-right">
+        <div class="form-group">           
+            <input type="search" class="form-control" [(ngModel)]="buscarReceta" placeholder="Busca receta por nombre, cocinero o ingredientes">
+        </div>
+    </div>
+    <div class="col-1 text-right">
+        <button type="submit" class="btn btn-secondary"><span class="fas fa-search"></span></button>
     </div>
 </div>
 
+
+<!-- LISTADO Y DETALLE DE LAS RECETAS -->
 <div class="row">
 
     <!-- listado -->
@@ -21,9 +43,8 @@
                 class="list-group-item {{r==rSeleccionada ? 'active' :'' }}">
                     <p class="receta">{{r.nombre}}</p> 
                     <p class="cocinero text-muted">{{r.cocinero}}</p>
-                    <span *ngIf="! r.isGlutenFree" class="text-success">Sin gluten</span>
-                    <span *ngIf="r.isGlutenFree" class="text-danger fas fa-exclamation-circle">Con gluten</span>
-                    <!-- fas fa-bread-slice -->
+                    <span *ngIf="! r.isGlutenFree" class="text-success fas fa-bread-slice"></span>
+                    <span *ngIf="r.isGlutenFree" class="text-danger fas fa-bread-slice"></span>
             </li>
         </ul>
     </div> <!-- class="col-4" -->
@@ -32,18 +53,23 @@
     <!-- detalle -->
     <div class="col-8">
 
-
         <div class="detalle-receta">
             <h3 class="detalle-receta-nombre">{{rSeleccionada.nombre}}</h3>
 
             <div class="row">
 
-                <div class="col-6">
-                    <span *ngIf="! rSeleccionada.isGlutenFree" class="badge badge-success">Sin gluten</span>
-                    <span *ngIf="rSeleccionada.isGlutenFree" class="badge badge-danger fas fa-exclamation-circle">Con gluten</span>
+                <div class="col-6 receta-relative">
+                    <span *ngIf="! rSeleccionada.isGlutenFree" class="text-success fas fa-bread-slice gluten-absolute"></span>
+                    <span *ngIf="rSeleccionada.isGlutenFree" class="text-danger fas fa-bread-slice gluten-absolute"></span>
                     <img src="{{rSeleccionada.foto}}" class="card-img-top" alt="{{rSeleccionada.nombre}}">
-                    <span class="text-left fas fa-heart text-danger"> {{rSeleccionada.likes}}</span>
-                    <p class="text-right">By {{rSeleccionada.cocinero}}</p>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="text-left fas fa-heart text-danger"> {{rSeleccionada.likes}}</p>
+                        </div>
+                        <div class="col-6">
+                            <p class="cocinero text-right">By {{rSeleccionada.cocinero}}</p>
+                        </div>
+                    </div>
                 </div> <!-- fin class="col-6" -->
 
                 <div class="col-6">
