@@ -19,7 +19,8 @@ import { FiltrosComponent } from './paginas/filtros/filtros.component';
 import { HelloDirective } from './directivas/hello.directive';
 import { SubrayarDirective } from './directivas/subrayar.directive';
 import { AnimalesPipe } from './pipes/animales.pipe';
-import { RecetarioComponent } from './paginas/recetario/recetario.component';    //módulo para llamadas por http
+import { RecetarioComponent } from './paginas/recetario/recetario.component';
+import { BuscadorRecetasPipe } from './pipes/buscador-recetas.pipe';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RecetarioComponent } from './paginas/recetario/recetario.component';   
     HelloDirective,
     SubrayarDirective,
     AnimalesPipe,
-    RecetarioComponent
+    RecetarioComponent,
+    BuscadorRecetasPipe
   ],
   imports: [
     BrowserModule,
