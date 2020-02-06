@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { GLOBAL } from '../app/global';
 
 /**
  * componente principal que se carga al arrancar la app
@@ -15,10 +15,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  //variable
+  //variables
   title = 'angularApp'; //la podemos pintar en app.component.html con {{title}}
-
   subtitle = 'subtitulo de angularApp';
+
+  global: Array<string>;
 
   productos = [{
       "id": 34,
@@ -95,6 +96,12 @@ export class AppComponent {
       ]
     }
   ];
+
+
+  constructor() {
+    console.trace('AppComponent constructor');        
+    this.global = [GLOBAL.usuario, GLOBAL.github, GLOBAL.version]; //array vacío: this.global = [];
+  } //fin constructor
 
 
   //función: 
