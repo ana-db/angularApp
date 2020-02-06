@@ -185,7 +185,7 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 05/02/2020
 
 - Directivas:
-	- una directiva es una propiedad de la etiqueta de lo lleva
+	- una directiva es una propiedad de la etiqueta/atributo que lo lleva
 	- *ngIf, *ngFor, *ngSwitch
 	- 3 tipos: 
 		Components:  son directivas con una plantilla de html.

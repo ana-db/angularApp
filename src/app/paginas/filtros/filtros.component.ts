@@ -10,6 +10,8 @@ export class FiltrosComponent implements OnInit {
 
   coche: any;
   animales: Array<any>;
+  tipos: Array<string>;
+  tipo: string;
 
   constructor() {
 
@@ -23,6 +25,8 @@ export class FiltrosComponent implements OnInit {
                   };    
                   
     this.animales = ANIMALES;
+    this.tipo = "Todos";
+    this.tipos = [ ...new Set( this.animales.map( (el) => el.Tipo ) ) ]; //this.tipos = this.animales.map( (el) => el.Tipo );
 
    } //fin ngOnInit
 
