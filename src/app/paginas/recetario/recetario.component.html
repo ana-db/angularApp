@@ -1,1 +1,66 @@
-<p>recetario works!</p>
+<!-- <pre>{{recetas | json}}</pre> -->
+
+
+<div class="row">
+    <div class="col text-right">
+        <div class="form-group">           
+            <input type="search" [(ngModel)]="buscarReceta" placeholder="Buscar por receta">
+            <button type="submit" class="btn btn-secondary"><span class="fas fa-search"></span></button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- listado -->
+    <div class="col-4">
+        <h3>Recetario</h3>
+        <ul class="list-group">
+            <li *ngFor="let r of recetas" 
+                (click)="seleccionarReceta(r)" 
+                class="list-group-item {{r==rSeleccionada ? 'active' :'' }}">
+                    <p class="receta">{{r.nombre}}</p> 
+                    <p class="cocinero text-muted">{{r.cocinero}}</p>
+                    <span *ngIf="! r.isGlutenFree" class="text-success">Sin gluten</span>
+                    <span *ngIf="r.isGlutenFree" class="text-danger fas fa-exclamation-circle">Con gluten</span>
+                    <!-- fas fa-bread-slice -->
+            </li>
+        </ul>
+    </div> <!-- class="col-4" -->
+
+
+    <!-- detalle -->
+    <div class="col-8">
+
+
+        <div class="detalle-receta">
+            <h3 class="detalle-receta-nombre">{{rSeleccionada.nombre}}</h3>
+
+            <div class="row">
+
+                <div class="col-6">
+                    <span *ngIf="! rSeleccionada.isGlutenFree" class="badge badge-success">Sin gluten</span>
+                    <span *ngIf="rSeleccionada.isGlutenFree" class="badge badge-danger fas fa-exclamation-circle">Con gluten</span>
+                    <img src="{{rSeleccionada.foto}}" class="card-img-top" alt="{{rSeleccionada.nombre}}">
+                    <span class="text-left fas fa-heart text-danger"> {{rSeleccionada.likes}}</span>
+                    <p class="text-right">By {{rSeleccionada.cocinero}}</p>
+                </div> <!-- fin class="col-6" -->
+
+                <div class="col-6">
+                    <p>Ingredientes:</p>  <!-- sacamos todos los datos del array historico -->
+                        <ul class="list-group">
+                            <li *ngFor="let ingrediente of rSeleccionada.ingredientes" class="list-group-item">
+                                {{ingrediente}}
+                            </li>
+                        </ul>
+                </div> <!-- fin class="col-6" -->
+
+            </div> <!-- fin class row dentro de class col-8 -->
+
+            <p>{{rSeleccionada.descripcion}}</p>
+
+        </div> <!-- fin class detalle-receta -->
+
+    </div> <!-- fin class col-8 -->
+
+</div> <!-- fin class row -->
