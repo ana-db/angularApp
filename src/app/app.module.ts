@@ -20,7 +20,8 @@ import { HelloDirective } from './directivas/hello.directive';
 import { SubrayarDirective } from './directivas/subrayar.directive';
 import { AnimalesPipe } from './pipes/animales.pipe';
 import { RecetarioComponent } from './paginas/recetario/recetario.component';
-import { BuscadorRecetasPipe } from './pipes/buscador-recetas.pipe';    //módulo para llamadas por http
+import { BuscadorRecetasPipe } from './pipes/buscador-recetas.pipe';
+import { Error404Component } from './paginas/error404/error404.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { BuscadorRecetasPipe } from './pipes/buscador-recetas.pipe';    //módul
     SubrayarDirective,
     AnimalesPipe,
     RecetarioComponent,
-    BuscadorRecetasPipe
+    BuscadorRecetasPipe,
+    Error404Component
   ],
   imports: [
     BrowserModule,
