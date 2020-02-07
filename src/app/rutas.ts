@@ -53,6 +53,12 @@ export const RUTAS =
         'ruta' : '/recetario',
         'nombre' : 'Recetario',
         'icono' : 'fas fa-utensils'
+    },
+
+    {
+        'ruta' : '/comparador',
+        'nombre' : 'Comparador',
+        'icono' : 'fas fa-not-equal'
     }
 
 ];

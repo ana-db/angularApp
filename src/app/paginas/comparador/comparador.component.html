@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col">
+        <h2>Listado</h2>
+        <ol>
+            <li *ngFor="let coche of coches"
+                (click)="seleciconarCoche(coche)">
+                {{coche.nombre}}
+            </li>
+        </ol>
+    </div>
+
+    <div class="col">
+        <h2>{{coche1.nombre}}</h2>
+        {{coche1.precio}}
+        <span class="badge badge-{{ (coche1.precio > coche2.precio)?'danger':'success'}}">{{coche1.precio - coche2.precio}}</span>
+    </div>
+    
+    <div class="col">
+        <h2>{{coche2.nombre}}</h2>
+        {{coche2.precio}} <span class="badge badge-{{ (coche2.precio > coche1.precio)?'danger':'success'}}">{{coche2.precio - coche1.precio}}</span>
+    </div>
+</div>

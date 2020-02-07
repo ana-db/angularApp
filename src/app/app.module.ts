@@ -22,7 +22,8 @@ import { AnimalesPipe } from './pipes/animales.pipe';
 import { RecetarioComponent } from './paginas/recetario/recetario.component';
 import { BuscadorRecetasPipe } from './pipes/buscador-recetas.pipe';
 import { Error404Component } from './paginas/error404/error404.component';
-import { SaludarComponent } from './paginas/saludar/saludar.component';    //módulo para llamadas por http
+import { SaludarComponent } from './paginas/saludar/saludar.component';
+import { ComparadorComponent } from './paginas/comparador/comparador.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { SaludarComponent } from './paginas/saludar/saludar.component';    //mó
     RecetarioComponent,
     BuscadorRecetasPipe,
     Error404Component,
-    SaludarComponent
+    SaludarComponent,
+    ComparadorComponent
   ],
   imports: [
     BrowserModule,
