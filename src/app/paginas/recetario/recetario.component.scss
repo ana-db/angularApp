@@ -41,8 +41,8 @@
 
 .receta-relative .gluten-absolute{
     position: absolute;
-    bottom: 15rem;
-    left: 19rem;
+    top: 5px; //bottom: 15rem;
+    right: 10px; //left: 19rem;
     padding: 0 10px;
 }
 
@@ -53,7 +53,7 @@
 
 .list-group-item .gluten-absolute-lista{
     position: absolute;
-    bottom: 4.5rem;
-    left: 19rem;
+    top: 10px; //bottom: 4.5rem;
+    right: 2px; //left: 19rem;
     padding: 0 10px;
 }
