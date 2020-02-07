@@ -9,7 +9,9 @@ import { RECETAS } from '../../recetas';
 export class RecetarioComponent implements OnInit {
 
   recetas : Array<any>;
-  rSeleccionada: Array<any>; //-- 
+  rSeleccionada: Array<any>; 
+  checkGluten: boolean;
+  busqueda: string;
 
   constructor() { 
     console.trace('RecetarioComponent constructor');
@@ -19,6 +21,8 @@ export class RecetarioComponent implements OnInit {
     porque si no, tenía un error "TypeError: Cannot read property '0' of undefined" 
     porque no había declarado rSeleccionada en ningún sitio ni la había inicializado
     */
+   this.checkGluten = false;
+   this.busqueda = "";
   } //fin constructor
 
 

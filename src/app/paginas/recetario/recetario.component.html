@@ -9,7 +9,7 @@
 
     <div class="col-7 text-left">
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">  
+            <input type="checkbox" [(ngModel)]="checkGluten" class="form-check-input">  
             <label class="form-check-label" for="exampleCheck1">Recetas Sin Gluten</label>
         </div>
     </div>
@@ -28,6 +28,11 @@
     <div class="col-1 text-right">
         <button type="submit" class="btn btn-secondary"><span class="fas fa-search"></span></button>
     </div>
+
+    <div>
+        {{checkGluten}}
+        {{busqueda}}
+    </div>
 </div>
 
 
@@ -38,7 +43,7 @@
     <div class="col-4">
         <h3>Recetario</h3>
         <ul class="list-group">
-            <li *ngFor="let r of recetas" 
+            <li *ngFor="let r of recetas | recetasFiltro : checkGluten : busqueda " 
                 (click)="seleccionarReceta(r)" 
                 class="list-group-item {{r==rSeleccionada ? 'active' :'' }}">
                     <p class="receta">{{r.nombre}}</p> 
