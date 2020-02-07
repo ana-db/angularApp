@@ -1,38 +1,25 @@
 <!-- <pre>{{recetas | json}}</pre> -->
 
 
-<div class="row">
+<div class="row mb-3">
 
-    <div class="col-5">
+    <div class="col">
         <a href="#">Cocinar Nueva Receta</a>
     </div>
 
-    <div class="col-7 text-left">
-        <div class="form-check">
-            <input type="checkbox" [(ngModel)]="checkGluten" class="form-check-input">  
-            <label class="form-check-label" for="exampleCheck1">Recetas Sin Gluten</label>
-        </div>
-    </div>
-
-</div>
-
-
-<!-- BUSCADOR -->
-<div class="row">  
-    <div class="col-5"></div> 
-    <div class="col-6 text-right">
-        <div class="form-group">           
+    <!-- BUSCADOR -->
+    <div class="col">
+        
+        <label class="form-check-label" for="exampleCheck1">Recetas Sin Gluten</label>
+        <input type="checkbox" [(ngModel)]="checkGluten" class="form-check-input">  
+            
+        <div class="input-group">
             <input type="search" class="form-control" [(ngModel)]="busqueda" placeholder="Busca receta por nombre, cocinero o ingredientes">
+            <div class="input-group-append"><span class="input-group-text"><span class="fas fa-search"></span></span></div>            
         </div>
-    </div>
-    <div class="col-1 text-right">
-        <button type="submit" class="btn btn-secondary"><span class="fas fa-search"></span></button>
+
     </div>
 
-    <div>
-        {{checkGluten}}
-        {{busqueda}}
-    </div>
 </div>
 
 
