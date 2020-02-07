@@ -19,7 +19,7 @@ export class AppComponent {
   title = 'angularApp'; //la podemos pintar en app.component.html con {{title}}
   subtitle = 'subtitulo de angularApp';
 
-  global: Array<string>;
+  global: any; //global: Array<string>;
 
   productos = [{
       "id": 34,
@@ -100,7 +100,7 @@ export class AppComponent {
 
   constructor() {
     console.trace('AppComponent constructor');        
-    this.global = [GLOBAL.usuario, GLOBAL.github, GLOBAL.version]; //array vacío: this.global = [];
+    this.global = GLOBAL; //this.global = [GLOBAL.usuario, GLOBAL.github, GLOBAL.version]; //array vacío: this.global = [];
   } //fin constructor
 
 
