@@ -8,9 +8,44 @@ comandos:
 	- abrir el servidor: ng serve --open
 	- crear componentes: ng g c paginas/inicio
 	- Crear directivas: ng g d directivas/subrayar
-	- Crear filtros: ng g pipe pipes/animales		
+	- Crear filtros: ng g pipe pipes/animales	
+
+	- Could not find module "@angular-devkit/build-angular" from... (angularFrutas 08/02/2020) --> npm install --save-dev @angular-devkit/build-angular	
 
 -------------------------------------------------------------------
+
+
+28/01/2020
+
+- Trabajando con Arrays (programación funcional)
+	map, filter, find y reduce --> sirven para trabajar con una colección de datos
+	- map: obtenemos otra colección de datos transformada a partir de la inicial. Devuelve un array de la misma long que el original pero distinto
+	- filter: hace un filtro de la colección de datos. Si la condición es true, devuelve el objeto completo sobre el que iteramos; si no, no devuelve nada
+	- reduce: devuelve un objeto a partir del array inicial, es decir, reduce los datos a uno sólo
+	- find: busca el 1er objeto que cumple una condición
+
+	ver imagen google: map filter find reduce
+
+	- Un map de lista a lista
+		https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map
+		- map crea una nueva array mediante la transformación de cada elemento en una array, de forma individual
+	- Filtrar
+		https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/filter
+		- filter crea una nueva matriz eliminando los elementos que no pertenecen
+	- Reducción de Arrays
+		https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/reduce
+		- reduce toma todos los elementos en un array, y los reduce en un sólo valor
+			IMPORTANTE: reduce devuelve un solo valor, no un array que contiene un único elemento
+		- reduce pasa la devolución de llamada cuatro argumentos: valor actual, valor anterior, índice actual, array con el que se llama a reduce. 
+			No siempre tienen que aparecer estos 4 argumentos, el 3ero y el 4o son opcionales
+		- reduce en la práctica
+	- Find buscando dentro de los Arrays
+		https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/find
+		- find() devuelve el valor del 1er elemento del array que cumple la función de prueba proporcionada. En cualquier otro caso devuelve undefined
+		- find no transforma el array desde el cual es llamado
+		
+
+-------------------------------------------------------------
 
 
 04/02/2020:
@@ -34,10 +69,14 @@ comandos:
 
 	- Por qué Typescript
 		- diseñado para ejecutarse en un navegador y hacer cosas simples con html
+		- con técnicas como el tipado estático opcional y/o la encapsulación para generar un código mucho más mantenible y escalable que con JavaScript tradicional, sin perder el carácter dinámico del mismo.
 
 	- Watcher: escucha y cada vez que hacemos un cambio, lo coge al vuelo
+		es decir, cada vez que guardemos las modificaciones el fichero se compilará automáticamente
 
 	- Sistema de tipos:
+		- principal característica de Typescript 
+		- realiza una formalización de los tipos de Javascript, mediante una representación estática de su sistema de tipado dinámico
 		- variables con let en lugar de var:
 		
 		let myName: string = "Miguel";
@@ -45,9 +84,9 @@ comandos:
     			console.log(name);
 		}
 
-	- en el fichero main.js se guardan todos los ficheros compilados
+		- en el fichero main.js se guardan todos los ficheros compilados
 
-	- TypeScript admite los siguientes tipos de datos:
+		TypeScript admite los siguientes tipos de datos:
 		- String 
 		- Number
 		- Boolean: tipo de dato logico que representa verdadero o falso.
@@ -60,35 +99,67 @@ comandos:
 			son siempre ctes
 			ej. estaciones: primavera, verano, otoño, invierno y cada uno estaría identificado con un número de forma que sólo se pueda elegir uno de esos valores y ningún otro
 		- Any: indica que la variable puede ser de cualquier tipo. Es muy útil a la hora de trabajar con librerías externas.
-			se suele usar con servicios rest porque sabemos que nos devuelve un json pero no es un tipo concreto
+			se suele usar con servicios rest porque sabemos que nos devuelve un json, pero un json no es un tipo concreto (dentro puede tener datos string, number...)
 		- Void: indica que una función no devolverá ningún valor.
 		- Never: este tipo representa el tipo de valores que nunca se producen. Por ejemplo para indicar que una función siempre arroja una excepción o que nunca termina su ejecución.
 		- ejemplos en doc oficial --> http://www.typescriptlang.org/docs/handbook/basic-types.html
 
+		- Ejemplo:
+			// 1 - declaracion del tipo
+			type Ranking = [number, string, boolean];
+			// 2 - definición de variables 
+			let position: number;
+			let playerName: string;
+			let finishedGame: boolean;
+			let ranking: Ranking;
+			let hallOfFame: Array<Ranking> = [];	
+			// 3 - crea un ranking
+			position = 1;
+			playerName = "Bruno Krebs";
+			finishedGame = true;
+			ranking = [position, playerName, finishedGame];
+			hallOfFame.push(ranking);
+			// 4 - crea otro ranking
+			position = 2;
+			playerName = "Maria Helena";
+			finishedGame = true;
+			ranking = [position, playerName, finishedGame];
+			hallOfFame.push(ranking);
+			// 5 - define una funcion que recorre todos los rankings
+			function printRankings(rankings: Array<RankingTuple>): void {
+			  for (let ranking of rankings) {
+			    console.log(ranking);
+			  }
+			}
+			// 6 - llama a la función
+			printRankings(hallOfFame);
+
 	- Iteraciones:
+		- for … in: permite recorrer objetos iterables obteniendo sus indices
+		- for … of: permite recorrer colecciones obteniendo su valor
 		
 		let list = [4, 5, 6];
 		for (let i in list) {
-   			console.log(i); // "0", "1", "2",
+   			console.log(i); // "0", "1", "2" <-- indices
 		}
 		for (let i of list) {
-   			console.log(i); // "4", "5", "6"
+   			console.log(i); // "4", "5", "6" <-- valores
 		}
 
 	- Módulos:
-		Otra de las características de Typescript es heredada de ECMAScript 2015: la posibilidad de crear módulos
-		no son más que una forma de encapsular código en su propio ámbito. 
-		Nos permiten agrupar nuestro código en diferentes ficheros, permitiéndonos exportarlos y utilizarlos donde los necesitemos. 
-		nos facilita la tarea de crear software más ordenado y por ende más escalable y mantenible.
+		- Otra de las características de Typescript es heredada de ECMAScript 2015: la posibilidad de crear módulos
+		- una forma de encapsular código en su propio ámbito. 
+		- Nos permiten agrupar nuestro código en diferentes ficheros, permitiéndonos exportarlos y utilizarlos donde los necesitemos. 
+		- nos facilita la tarea de crear software más ordenado y por ende más escalable y mantenible.
+		- se usan las palabras reservadas export e import
 
-		TypeScript también soporta otra serie de funcionalidades como:
-
-		Clases y Objetos
-		Herencia
-		Interfaces
-		Clases Abstractas
-		Getters y Setters
-		Decoradores
+		- TypeScript también soporta otra serie de funcionalidades como:
+			- Clases y Objetos
+			- Herencia
+			- Interfaces
+			- Clases Abstractas
+			- Getters y Setters
+			- Decoradores
 
 	- extra: Videos Youtube: Introducción al curso de TypeScript para Angular 2 en Español --> https://www.youtube.com/watch?v=vFJT8pX0eXs&list=PLBdkl5-ytBTw28OJMumO-iUxYnShbhqwO
 
@@ -101,6 +172,10 @@ comandos:
 	- https://sass-lang.com/guide
 		- sass --watch input.scss output.css --> ficheros de entrada y salida
 		- Variables
+			$color_pink:#da9393; //Variable
+			h1{
+    				color: $color_pink; //usamos la variable que hemos creado
+			}
 		- ng build --prod --> genera una carpeta con un fichero para dejar en el servidor de producción (dist\angularApp)
 			- main.js --> contiene todos los componentes del desarrollo
 			- runtime --> código fuente
@@ -119,12 +194,47 @@ chunk {1} main-es5.c98ae739d9a85f89df4a.js (main) 310 kB [initial] [rendered]
 chunk {4} styles.c028f661f79f7de98b90.css (styles) 154 kB [initial] [rendered]
 Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
-		- Nesting
+		- Nesting: en este ejemplo aplicamos estilos a las etiquetas code que estén dentro de p
+			p {
+    				code {
+        				color: $color_green;
+        				background-color: $color_black;
+        				padding: 2px 3px;
+    				}
+			}
 		- Partials: es una especie de import (y está montado), es como hacer imports de pequeños cachitos de sass. 
 			Se distingue porque su nomenclatura es _partial.scss, se importa como import partial (sin _ ni extensión)
 		- Modules: para importar otro fichero de estilo en el orden en el que queramos, @use 'base';
 		- Mixins: define una función y se la aplica a un componente 
+			//mixins o funciones para reutilizar:
+			@mixin redondear( $radio, $color ) {
+			    border-radius: $radio;
+			    border: 1px solid $color;
+			    padding: 10px;
+			}
+			.borde10{
+			    @include redondear(10px, $color_pink); //usamos mixin
+			}
+			.borde50{
+			    @include redondear(50%, #FF0000);
+			}
 		- Extend/Inheritance
+			//Herencia (Extend/Inheritance):
+			%boton {
+    				@include redondear(45%, $color_black);
+    				border: 3px solid;
+    				padding: 10px;
+    				color: white;
+    				background-color: #2A272A;
+			}
+			.boton-verde {
+			    @extend %boton;
+			    background-color: #356840;
+			    border-color: darkolivegreen;
+			    &:hover { //aplicamos nesting en el pseudoselector para hacer el hover
+			        background-color: rgb(73, 156, 84);
+			    }
+			}
 	
 
 
@@ -186,30 +296,33 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
 - Directivas:
 	- una directiva es una propiedad de la etiqueta/atributo que lo lleva
-	- *ngIf, *ngFor, *ngSwitch
+	- *ngIf, *ngFor, *ngSwitch son ejemplos de directivas
 	- 3 tipos: 
-		Components:  son directivas con una plantilla de html.
-		Estructurales: cambian el DOM añdiendo o removiendo elementos, por jemplo *ngIf.
-		Attribute directive: cambian la apariencia de un elemento del DOM, por ejemplo NgStyle. --> hidden, disabled
+		- Components: son directivas con una plantilla de html.
+		- Estructurales: cambian el DOM añdiendo o removiendo elementos, por jemplo *ngIf.
+		- Attribute directive: cambian la apariencia de un elemento del DOM, por ejemplo NgStyle. --> hidden, disabled
 
 	- ¿Cómo creo una directiva? 
 		ng generate directive $nombre_de_nuestra_directiva --> ng g d directivas/hello
-
-		ElementRef: es una referencia al elemento html que contiene la directiva. Solo hay que saber cómo se accede --> en nuestro ejemplo sería el "p" que contiene appHello
-
-		@HostListener: Nos da la capacidad de escuchar eventos del elemento que contiene la directiva. En este caso ‘mouseenter’ y ‘mouseleave’. Justo debajo la función que se va a ejecutar cuando ocurra.
-
-
-
+		- decorador @Directive con una propiedad “selector” donde pondremos el nombre de nuestra directiva. 
+			El nombre que pongamos en esta propiedad será el mismo nombre que tendrá el atributo html.
+		- ElementRef: es una referencia al elemento html que contiene la directiva. Sólo hay que saber cómo se accede 
+			--> en nuestro ejemplo sería el "p" que contiene appHello
+			 hay que inyectársela al constructor --> constructor(private element: ElementRef){}
+		- @HostListener: Nos da la capacidad de escuchar eventos del elemento que contiene la directiva. 
+			Nuestros ‘mouseenter’ y ‘mouseleave’ (cuando ratón entra y ratón sale). Justo debajo la función que se va a ejecutar cuando ocurra.
+		- Es importantes no olvidarnos de importar HostListener y ElementRef
 
 
 - Pipes o Filtros
 	- nos permiten alterar la forma en la que se van a visualizar los datos --> transformar cosas
 	- docu oficial --> https://angular.io/guide/pipes
 	- filtros de angular --> https://angular.io/api?type=pipe
-		- UpperCasePipe --> {{ value_expression | uppercase }}
-		- CurrencyPipe  --> {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }}
+		- UpperCasePipe --> {{ value_expression | uppercase }} --> pasa el texto a mayúsculas
+		- CurrencyPipe  --> {{ value_expression | currency [ : currencyCode [ : display [ : digitsInfo [ : locale ] ] ] ] }} --> formato moneda
 			los [ indican que es un campo opcional
+	- nosotros podemos crear nuestros propios filtros
+		ng g pipe pipes/animales
 
 
 
