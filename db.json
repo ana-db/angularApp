@@ -23,7 +23,7 @@
     {
       "id": 5,
       "titulo": "Hacer CRUD de tareas",
-      "completada": false
+      "completada": true
     },
     {
       "id": 6,
@@ -33,17 +33,17 @@
     {
       "id": 7,
       "titulo": "Mejorar UI mostrando mensajes",
-      "completada": false
+      "completada": true
     },
     {
       "id": 8,
       "titulo": "Al eliminar mostrar al usuario ID y titulo de la tarea eliminada",
-      "completada": false
+      "completada": true
     },
     {
       "id": 9,
       "titulo": "Mejorar diseño",
-      "completada": false
+      "completada": true
     },
     {
       "id": 10,
@@ -53,6 +53,26 @@
     {
       "id": 11,
       "titulo": "¿Qué pasa si paramos json-server?",
+      "completada": false
+    },
+    {
+      "id": 12,
+      "titulo": "nueva",
+      "completada": false
+    },
+    {
+      "id": 13,
+      "titulo": "tarea",
+      "completada": false
+    },
+    {
+      "id": 14,
+      "titulo": "nueva",
+      "completada": false
+    },
+    {
+      "id": 15,
+      "titulo": "nuevatarea",
       "completada": false
     }
   ],

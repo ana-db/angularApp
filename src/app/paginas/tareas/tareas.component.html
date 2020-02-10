@@ -1,36 +1,53 @@
-<h2>Tareas</h2>
-<p>Ejemplo de Provider o Servicio para hacer un CRUD completo contra un Servicio Rest</p>
+<div class="principal">
 
-<!-- {{tareas | json}} -->
+    <p>Ejemplo de Provider o Servicio para hacer un CRUD completo contra un Servicio Rest</p>
 
+    <!-- {{tareas | json}} -->
 
-<div class="row">
-    <div class="col">
+    <div class="row">
+        <div class="col-lg-6 offset-3">
 
-        <div>
-            <input type="text" [(ngModel)]="tituloNuevo">
-            <button (click)="crearTarea()">Crear nueva tarea</button>
-        </div>
+            <!-- mensajes al usuario -->
+            <!-- tarea con estado editado -->
+            <div class="{{ (alertaEstadoEditado) ? 'alert alert-success' : 'd-none' }}" role="alert">
+                Has modificado el estado de la tarea {{tituloTareaEditada}}
+            </div>
 
-        <ul>
-            <li *ngFor = "let tarea of tareas">
-                <!-- editar estado -->
-                <!-- usamos la directiva [checked]=tarea.completada para pintar el check sólo en las tareas que están terminadas -->
-                <!-- función (click)="editarEstado(tarea)" para cambiar el check -->
-                <input type="checkbox" [checked]=tarea.completada (click)="editarEstado(tarea)"> 
-                <b>{{tarea.id}}</b>
+            <!-- tarea eliminada -->
+            <div class="{{ (alertaTareaEliminada) ? 'alert alert-danger' : 'd-none' }}" role="alert">
+                Has eliminado la tarea {{tituloTareaEliminada}} con id {{idEliminado}}
+            </div>
 
-                <!-- {{tarea.completada}} -->
-                <!-- en función de si la tarea está completada o no, nos pondrá la clase completada -->
-                <span class="titulo {{ (tarea.completada) ? 'completada' : '' }}">{{tarea.titulo}}</span>
+            <div class="panel-tareas">
 
-                <!-- eliminar tarea -->
-                <span class="fas fa-trash-alt" (click)="eliminarTarea(tarea)"></span>
-            </li>
-        </ul>
-    </div>
-</div>
+                <h2>Lista de tareas</h2>
 
+                <input type="text" [(ngModel)]="tituloNuevo">
+                <button (click)="crearTarea()">Crear nueva tarea</button>
+                <div class="{{ (alertaTareaCreada) ? 'alert alert-primary' : 'd-none' }}" role="alert">
+                    Has creado una tarea nueva {{tituloNuevo}}
+                </div>
+                
+                <ul class="lista-tareas">
+                    <li *ngFor = "let tarea of tareas">
+                        <!-- editar estado -->
+                        <!-- usamos la directiva [checked]=tarea.completada para pintar el check sólo en las tareas que están terminadas -->
+                        <!-- función (click)="editarEstado(tarea)" para cambiar el check -->
+                        <input type="checkbox" [checked]=tarea.completada (click)="editarEstado(tarea)"> 
+                        <b>{{tarea.id}}</b>
 
-<img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80" alt="tareas">
+                        <!-- {{tarea.completada}} -->
+                        <!-- en función de si la tarea está completada o no, nos pondrá la clase completada -->
+                        <span class="titulo {{ (tarea.completada) ? 'completada' : '' }}">{{tarea.titulo}}</span>
+
+                        <!-- eliminar tarea -->
+                        <span class="fas fa-trash-alt" (click)="eliminarTarea(tarea)"></span>
+                    </li>
+                </ul>
+
+            </div>
+        </div> <!-- fin col -->
+    </div> <!-- fin row -->
+
+</div> <!-- fin div principal -->
 

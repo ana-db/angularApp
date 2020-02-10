@@ -12,12 +12,26 @@ export class TareasComponent implements OnInit {
   tareas: Array<Tarea>; //1) array de tareas
   tituloNuevo: string;
 
+  alertaTareaCreada: boolean;
+  alertaEstadoEditado: boolean;
+  alertaTareaEliminada: boolean;
+  idEliminado: number;
+  tituloTareaEliminada: string;
+  tituloTareaEditada: string;
+
   constructor( private servicioTarea: TareasService ) { //4) inyectamos private servicioTarea: TareasService, para llamar al servicio rest
 
     console.trace('TareasComponent constructor');
 
     this.tareas = []; //2) incializamos el array vacio en el constructor
     this.tituloNuevo = '';
+
+    this.alertaTareaCreada = false;
+    this.alertaEstadoEditado = false;
+    this.alertaTareaEliminada = false;
+    this.idEliminado = 0;
+    this.tituloTareaEliminada = '';
+    this.tituloTareaEditada = '';
 
   } //fin constructor
 
@@ -39,6 +53,9 @@ export class TareasComponent implements OnInit {
     tarea.completada = !tarea.completada; //cambiamos el estado de la tarea
 
     this.servicioTarea.modificar(tarea).subscribe( () => this.cargarTareas() ); //como no vamos usar los datos que devuelve el método, podemos poner () delante de =>. Es decir, la tarea modifica no la vamos a usar, sólo visualizar
+
+    this.alertaEstadoEditado = true; 
+    this.tituloTareaEditada = tarea.titulo
 
   } //fin editarEstado
 
@@ -67,10 +84,14 @@ export class TareasComponent implements OnInit {
 
     if( confirm('¿Estás seguro de que quieres eliminar esta tarea?') ){
       console.trace('Eliminación confirmada');
+      this.idEliminado = tarea.id;
+      this.tituloTareaEliminada = tarea.titulo
       this.servicioTarea.eliminar(tarea.id).subscribe( () => this.cargarTareas() ); 
     }else{
       console.trace('Eliminación cancelada');
     } 
+
+    this.alertaTareaEliminada = true;
 
   } //fin eliminarTarea
 
@@ -81,15 +102,21 @@ export class TareasComponent implements OnInit {
 
     //creamos un objeto tarea nuevo:
     const tareaNueva = new Tarea();
-    tareaNueva.titulo = this.tituloNuevo;
-    console.debug('Tarea nueva %o', tareaNueva);
+    
+    //if ( this.tituloNuevo.length > 1 ){
+      tareaNueva.titulo = this.tituloNuevo;
+      console.debug('Tarea nueva %o', tareaNueva);
 
-    this.servicioTarea.crear(tareaNueva).subscribe( datos => {
-      console.debug('Nueva tarea creada en json-server %o', datos);
-      this.tituloNuevo = ''; //limpiamos input text
-      this.cargarTareas();
-    });
-
+      this.servicioTarea.crear(tareaNueva).subscribe( datos => {
+        console.debug('Nueva tarea creada en json-server %o', datos);
+        this.tituloNuevo = ''; //limpiamos input text
+        this.cargarTareas();
+      });
+      this.alertaTareaCreada = true;
+   /* }else{
+      let mensaje = "El titulo de la tarea debe contener al menos 1 caracter";
+    } 
+  */
   } //fin crearTarea
 
 

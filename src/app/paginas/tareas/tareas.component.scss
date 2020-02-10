@@ -1,3 +1,13 @@
+h2{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.lista-tareas{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 li{
     span.titulo{
         font-weight: 500;
@@ -11,14 +21,16 @@ li{
     }
 }
 
-/*
-.row{ //.panel-tareas
-    background-image: url("https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80");
+.principal{
+    background-image: url("https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
     background-repeat: no-repeat, repeat;
+    object-fit: cover;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 200px;
+    padding-right: 190px;
 }
 
-img{
-    opacity: 70%;
+.row{
+    background-color: rgba($color: white, $alpha: 0.5);
 }
-
-*/
