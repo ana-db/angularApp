@@ -6,6 +6,7 @@
 
 <ul>
     <li *ngFor = "let tarea of tareas">
+        <!-- editar estado -->
         <!-- usamos la directiva [checked]=tarea.completada para pintar el check sólo en las tareas que están terminadas -->
         <!-- función (click)="editarEstado(tarea)" para cambiar el check -->
         <input type="checkbox" [checked]=tarea.completada (click)="editarEstado(tarea)"> 
@@ -14,6 +15,9 @@
         <!-- {{tarea.completada}} -->
         <!-- en función de si la tarea está completada o no, nos pondrá la clase completada -->
         <span class="titulo {{ (tarea.completada) ? 'completada' : '' }}">{{tarea.titulo}}</span>
+
+        <!-- eliminar tarea -->
+        <span class="fas fa-trash-alt" (click)="eliminarTarea(tarea)"></span>
     </li>
 </ul>
 

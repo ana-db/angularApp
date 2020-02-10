@@ -32,7 +32,7 @@ export class TareasComponent implements OnInit {
 
   editarEstado( tarea: Tarea){
 
-    console.debug('Click %o', tarea);
+    console.debug('Click check estado %o', tarea);
 
     tarea.completada = !tarea.completada; //cambiamos el estado de la tarea
 
@@ -57,6 +57,20 @@ export class TareasComponent implements OnInit {
     }); 
 
   }
+
+
+  eliminarTarea(tarea: Tarea){
+
+    console.debug('Click eliminar %o', tarea);
+
+    if( confirm('¿Estás seguro de que quieres eliminar esta tarea?') ){
+      console.trace('Eliminación confirmada');
+      this.servicioTarea.eliminar(tarea.id).subscribe( () => this.cargarTareas() ); 
+    }else{
+      console.trace('Eliminación cancelada');
+    } 
+
+  } //fin eliminarTarea
 
 
 }//fin TareasComponent

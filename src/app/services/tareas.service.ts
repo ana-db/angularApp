@@ -47,7 +47,12 @@ export class TareasService implements ITareasService{
 
 
   eliminar(id: number): Observable<Tarea> {
-    throw new Error("Method not implemented.");
+
+    const url = `http://localhost:3000/tareas/${id}`;
+    console.debug('DELETE %s eliminar', url);
+
+    return this.http.delete<Tarea>(url);
+
   }
 
 
