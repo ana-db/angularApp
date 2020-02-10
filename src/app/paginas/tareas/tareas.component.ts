@@ -15,9 +15,13 @@ export class TareasComponent implements OnInit {
   alertaTareaCreada: boolean;
   alertaEstadoEditado: boolean;
   alertaTareaEliminada: boolean;
+  
   idEliminado: number;
   tituloTareaEliminada: string;
   tituloTareaEditada: string;
+  tituloTareaNueva: string;
+  mensaje: string;
+  
 
   constructor( private servicioTarea: TareasService ) { //4) inyectamos private servicioTarea: TareasService, para llamar al servicio rest
 
@@ -29,9 +33,12 @@ export class TareasComponent implements OnInit {
     this.alertaTareaCreada = false;
     this.alertaEstadoEditado = false;
     this.alertaTareaEliminada = false;
+  
     this.idEliminado = 0;
     this.tituloTareaEliminada = '';
     this.tituloTareaEditada = '';
+    this.tituloTareaNueva = '';
+    this.mensaje = '';
 
   } //fin constructor
 
@@ -55,7 +62,7 @@ export class TareasComponent implements OnInit {
     this.servicioTarea.modificar(tarea).subscribe( () => this.cargarTareas() ); //como no vamos usar los datos que devuelve el método, podemos poner () delante de =>. Es decir, la tarea modifica no la vamos a usar, sólo visualizar
 
     this.alertaEstadoEditado = true; 
-    this.tituloTareaEditada = tarea.titulo
+    this.tituloTareaEditada = tarea.titulo;
 
   } //fin editarEstado
 
@@ -85,7 +92,7 @@ export class TareasComponent implements OnInit {
     if( confirm('¿Estás seguro de que quieres eliminar esta tarea?') ){
       console.trace('Eliminación confirmada');
       this.idEliminado = tarea.id;
-      this.tituloTareaEliminada = tarea.titulo
+      this.tituloTareaEliminada = tarea.titulo;
       this.servicioTarea.eliminar(tarea.id).subscribe( () => this.cargarTareas() ); 
     }else{
       console.trace('Eliminación cancelada');
@@ -103,7 +110,7 @@ export class TareasComponent implements OnInit {
     //creamos un objeto tarea nuevo:
     const tareaNueva = new Tarea();
     
-    //if ( this.tituloNuevo.length > 1 ){
+    if ( this.tituloNuevo.length > 1 ){
       tareaNueva.titulo = this.tituloNuevo;
       console.debug('Tarea nueva %o', tareaNueva);
 
@@ -113,10 +120,11 @@ export class TareasComponent implements OnInit {
         this.cargarTareas();
       });
       this.alertaTareaCreada = true;
-   /* }else{
-      let mensaje = "El titulo de la tarea debe contener al menos 1 caracter";
+      this.tituloTareaNueva = tareaNueva.titulo;
+    }else{
+      this.mensaje = "El titulo de la tarea no es válido, debe contener al menos 2 caracteres";
     } 
-  */
+  
   } //fin crearTarea
 
 

@@ -48,31 +48,11 @@
     {
       "id": 10,
       "titulo": "Comprobar titulo tarea nueva > 1",
-      "completada": false
+      "completada": true
     },
     {
       "id": 11,
       "titulo": "¿Qué pasa si paramos json-server?",
-      "completada": false
-    },
-    {
-      "id": 12,
-      "titulo": "nueva",
-      "completada": false
-    },
-    {
-      "id": 13,
-      "titulo": "tarea",
-      "completada": false
-    },
-    {
-      "id": 14,
-      "titulo": "nueva",
-      "completada": false
-    },
-    {
-      "id": 15,
-      "titulo": "nuevatarea",
       "completada": false
     }
   ],

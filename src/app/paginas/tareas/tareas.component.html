@@ -2,21 +2,31 @@
 
     <p>Ejemplo de Provider o Servicio para hacer un CRUD completo contra un Servicio Rest</p>
 
+    <!-- mensajes al usuario -->
+            <!-- tarea con estado editado -->
+            <div class="{{ (alertaEstadoEditado) ? 'alert alert-success' : 'd-none' }}" role="alert">
+                Has modificado el estado de la tarea <b>{{tituloTareaEditada}}</b>
+            </div>
+
+            <!-- tarea eliminada -->
+            <div class="{{ (alertaTareaEliminada) ? 'alert alert-danger' : 'd-none' }}" role="alert">
+                Has eliminado la tarea <b>{{tituloTareaEliminada}}</b> con id <b>{{idEliminado}}</b>
+            </div>
+
+            <!-- tarea creada -->
+            <div class="{{ (alertaTareaCreada) ? 'alert alert-primary' : 'd-none' }}" role="alert">
+                Has creado una tarea nueva <b>{{tituloTareaNueva}}</b>
+            </div>
+            <div class="{{ (mensaje != '') ? 'alert alert-warning' : 'd-none' }}" role="alert">
+                {{mensaje}}
+            </div>
+
     <!-- {{tareas | json}} -->
 
     <div class="row">
         <div class="col-lg-6 offset-3">
 
-            <!-- mensajes al usuario -->
-            <!-- tarea con estado editado -->
-            <div class="{{ (alertaEstadoEditado) ? 'alert alert-success' : 'd-none' }}" role="alert">
-                Has modificado el estado de la tarea {{tituloTareaEditada}}
-            </div>
-
-            <!-- tarea eliminada -->
-            <div class="{{ (alertaTareaEliminada) ? 'alert alert-danger' : 'd-none' }}" role="alert">
-                Has eliminado la tarea {{tituloTareaEliminada}} con id {{idEliminado}}
-            </div>
+            <!---->
 
             <div class="panel-tareas">
 
@@ -24,9 +34,6 @@
 
                 <input type="text" [(ngModel)]="tituloNuevo">
                 <button (click)="crearTarea()">Crear nueva tarea</button>
-                <div class="{{ (alertaTareaCreada) ? 'alert alert-primary' : 'd-none' }}" role="alert">
-                    Has creado una tarea nueva {{tituloNuevo}}
-                </div>
                 
                 <ul class="lista-tareas">
                     <li *ngFor = "let tarea of tareas">
