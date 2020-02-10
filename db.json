@@ -53,7 +53,7 @@
     {
       "id": 11,
       "titulo": "¿Qué pasa si paramos json-server?",
-      "completada": false
+      "completada": true
     }
   ],
   "colores": [

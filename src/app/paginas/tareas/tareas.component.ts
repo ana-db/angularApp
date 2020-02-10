@@ -80,7 +80,11 @@ export class TareasComponent implements OnInit {
       //nos susbscribimos porque devuelve un observable. Nos devolverá los datos, es decir, las tareas
       console.debug('Esto se ejecuta de forma asincrona');
       this.tareas = datos; //asginamos los datos a las tareas
-    }); 
+    },
+    (error) => {
+      console.debug('El json-server se ha detenido', error);
+      this.mensaje = 'Error de conexión: el json-server se ha detenido y no se puede conectar con él';
+    } ); 
 
   }
 
@@ -122,7 +126,7 @@ export class TareasComponent implements OnInit {
       this.alertaTareaCreada = true;
       this.tituloTareaNueva = tareaNueva.titulo;
     }else{
-      this.mensaje = "El titulo de la tarea no es válido, debe contener al menos 2 caracteres";
+      this.mensaje = 'El titulo de la tarea no es válido, debe contener al menos 2 caracteres';
     } 
   
   } //fin crearTarea
