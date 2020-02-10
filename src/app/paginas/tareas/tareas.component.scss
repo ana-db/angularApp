@@ -9,6 +9,8 @@ h2{
 }
 
 li{
+    list-style: none; //quitamos el puntito negro de la numeración
+
     span.titulo{
         font-weight: 500;
         margin-left: 10px;
