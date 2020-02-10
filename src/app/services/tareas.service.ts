@@ -35,9 +35,16 @@ export class TareasService implements ITareasService{
     throw new Error("Method not implemented.");
   }
 
+
   modificar(tarea: Tarea): Observable<Tarea> {
-    throw new Error("Method not implemented.");
+
+    const url = `http://localhost:3000/tareas/${tarea.id}`;
+    console.debug('PUT %s modificar tarea %o ', url, tarea); //%s string, %o objeto
+
+    return this.http.put<Tarea>(url, tarea);
+
   }
+
 
   eliminar(id: number): Observable<Tarea> {
     throw new Error("Method not implemented.");

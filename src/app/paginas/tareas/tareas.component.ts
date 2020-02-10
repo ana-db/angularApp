@@ -25,11 +25,38 @@ export class TareasComponent implements OnInit {
     console.trace('TareasComponent ngOnInit');
 
     //3) en ngOnInit llamamos al service para obtener tarea:
+    this.cargarTareas();
+
+  } //fin ngOnInit
+
+
+  editarEstado( tarea: Tarea){
+
+    console.debug('Click %o', tarea);
+
+    tarea.completada = !tarea.completada; //cambiamos el estado de la tarea
+
+    this.servicioTarea.modificar(tarea).subscribe( () => this.cargarTareas() ); //como no vamos usar los datos que devuelve el método, podemos poner () delante de =>. Es decir, la tarea modifica no la vamos a usar, sólo visualizar
+
+  } //fin editarEstado
+
+
+  /**
+   * Llama al servicio para cargar todas las tareas
+   * Nos va a servir para refrescar la lista de tareas
+   */
+  private cargarTareas(): void{ //no devuelve nada
+
+    console.trace('cargarTareas');
+
+    //llamamos al service para obtener tarea:
     this.servicioTarea.listar().subscribe( datos => { 
-      //nos susbscribimos porque es un observable. Nos devolverá los datos, es decir, las tareas
+      //nos susbscribimos porque devuelve un observable. Nos devolverá los datos, es decir, las tareas
       console.debug('Esto se ejecuta de forma asincrona');
       this.tareas = datos; //asginamos los datos a las tareas
     }); 
-  } //fin ngOnInit
+
+  }
+
 
 }//fin TareasComponent

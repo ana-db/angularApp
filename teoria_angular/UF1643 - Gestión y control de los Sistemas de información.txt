@@ -334,6 +334,7 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
 - Observables
 	- se usan con el servicio rest para hacer llamadas asíncronas
+	- ver github página y servicio tareas en angularApp --> CRUD de tareas sobre servicio rest
 	- db.json: 
 		//nuevo array de tareas:
   		"tareas": [

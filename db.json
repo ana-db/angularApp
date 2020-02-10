@@ -18,10 +18,9 @@
     {
       "id": 4,
       "titulo": "Crear provider",
-      "completada": false
+      "completada": true
     }
   ],
-
   "colores": [
     {
       "id": 1,
@@ -54,7 +53,6 @@
       "id": 8
     }
   ],
-
   "productos": [
     {
       "id": 34,
@@ -66,38 +64,39 @@
         "id": 1,
         "nombre": "Bebidas"
       },
-      "historico": [{
+      "historico": [
+        {
           "fecha": "17 / 01 / 2020",
           "precio": 1.45
         },
         {
           "fecha": "01 / 12 / 2019",
-          "precio": 1.40
+          "precio": 1.4
         },
         {
           "fecha": "25 / 11 / 2019",
-          "precio": 1.20
+          "precio": 1.2
         }
       ]
     },
-
     {
       "id": 4,
       "nombre": "Leche",
       "imagen": "https://ep01.epimg.net/elpais/imagenes/2019/12/20/buenavida/1576848685_542543_1576848937_noticia_normal.jpg",
       "gluten": false,
-      "precio": 1.10,
+      "precio": 1.1,
       "categoria": {
         "id": 1,
         "nombre": "Bebidas"
       },
-      "historico": [{
+      "historico": [
+        {
           "fecha": "31 / 12 / 2019",
           "precio": 1.05
         },
         {
           "fecha": "31 / 12 / 2018",
-          "precio": 1.00
+          "precio": 1
         },
         {
           "fecha": "31 / 12 / 2017",
@@ -105,7 +104,6 @@
         }
       ]
     },
-
     {
       "id": 10,
       "nombre": "Galletas",
@@ -116,7 +114,8 @@
         "id": 2,
         "nombre": "Panaderia"
       },
-      "historico": [{
+      "historico": [
+        {
           "fecha": "10 / 01 / 2020",
           "precio": 2
         },
