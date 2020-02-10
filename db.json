@@ -13,11 +13,46 @@
     {
       "id": 3,
       "titulo": "Tomar cafe y descanso a las 10:30",
-      "completada": false
+      "completada": true
     },
     {
       "id": 4,
       "titulo": "Crear provider",
+      "completada": true
+    },
+    {
+      "id": 5,
+      "titulo": "Hacer CRUD de tareas",
+      "completada": false
+    },
+    {
+      "id": 6,
+      "titulo": "Entenderlo, depurar y consola",
+      "completada": true
+    },
+    {
+      "id": 7,
+      "titulo": "Mejorar UI mostrando mensajes",
+      "completada": false
+    },
+    {
+      "id": 8,
+      "titulo": "Al eliminar mostrar al usuario ID y titulo de la tarea eliminada",
+      "completada": false
+    },
+    {
+      "id": 9,
+      "titulo": "Mejorar diseño",
+      "completada": false
+    },
+    {
+      "id": 10,
+      "titulo": "Comprobar titulo tarea nueva > 1",
+      "completada": false
+    },
+    {
+      "id": 11,
+      "titulo": "¿Qué pasa si paramos json-server?",
       "completada": false
     }
   ],

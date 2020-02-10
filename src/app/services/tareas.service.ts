@@ -18,43 +18,37 @@ export class TareasService implements ITareasService{
   //importamos import { Observable } from "rxjs"; y import { Tarea } from '../model/tarea';
   //luego importamos los métodos desde la clase con la bombilla azul
   listar(): Observable<Tarea[]> {
-
     //el servicio rest funciona en la url http://localhost:3000/tareas
     const url = 'http://localhost:3000/tareas';
     console.debug(`GET ${url}`);
-
     return this.http.get<Array<Tarea>>(url); //el método get sólo está definido para any así que necesitamos hacer este cast get<Array<Tarea>>(url) en lugar de get(url);
-  }
+  }//fin listar
 
 
   detalle(id: number): Observable<Tarea> {
     throw new Error("Method not implemented.");
   }
 
+
   crear(tarea: Tarea): Observable<Tarea> {
-    throw new Error("Method not implemented.");
-  }
+    const url = `http://localhost:3000/tareas/`;
+    console.debug('POST %s crear tarea %o ', url, tarea); //%s string, %o objeto
+    return this.http.post<Tarea>(url, tarea);
+  } //fin crear
 
 
   modificar(tarea: Tarea): Observable<Tarea> {
-
     const url = `http://localhost:3000/tareas/${tarea.id}`;
     console.debug('PUT %s modificar tarea %o ', url, tarea); //%s string, %o objeto
-
     return this.http.put<Tarea>(url, tarea);
-
-  }
+  } //fin modificar
 
 
   eliminar(id: number): Observable<Tarea> {
-
     const url = `http://localhost:3000/tareas/${id}`;
     console.debug('DELETE %s eliminar', url);
-
     return this.http.delete<Tarea>(url);
-
-  }
-
+  } //fin eliminar
 
 
 } //fin TareasService
