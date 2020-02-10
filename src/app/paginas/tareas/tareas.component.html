@@ -3,23 +3,30 @@
     <p>Ejemplo de Provider o Servicio para hacer un CRUD completo contra un Servicio Rest</p>
 
     <!-- mensajes al usuario -->
-            <!-- tarea con estado editado -->
+    <div class="{{ (mensaje != '') ? 'alert alert-primary' : 'd-none' }} 
+                alert alert-primary alert-dismissible fade show" role="alert">
+        {{mensaje}} <b>{{idTareaMensaje}}</b> <b>{{tituloTareaMensaje}}</b> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+            <!-- tarea con estado editado --> <!--
             <div class="{{ (alertaEstadoEditado) ? 'alert alert-success' : 'd-none' }}" role="alert">
                 Has modificado el estado de la tarea <b>{{tituloTareaEditada}}</b>
-            </div>
+            </div> -->
 
-            <!-- tarea eliminada -->
+            <!-- tarea eliminada --> <!--
             <div class="{{ (alertaTareaEliminada) ? 'alert alert-danger' : 'd-none' }}" role="alert">
                 Has eliminado la tarea <b>{{tituloTareaEliminada}}</b> con id <b>{{idEliminado}}</b>
-            </div>
+            </div> -->
 
-            <!-- tarea creada -->
+            <!-- tarea creada --> <!--
             <div class="{{ (alertaTareaCreada) ? 'alert alert-primary' : 'd-none' }}" role="alert">
                 Has creado una tarea nueva <b>{{tituloTareaNueva}}</b>
-            </div>
+            </div> --> <!--
             <div class="{{ (mensaje != '') ? 'alert alert-warning' : 'd-none' }}" role="alert">
                 {{mensaje}}
-            </div>
+            </div> -->
 
     <!-- {{tareas | json}} -->
 

@@ -4,12 +4,14 @@ UF1643 - Gestión y control de los Sistemas de información
 -------------------------------------------------------------------
 
 comandos:
-	- crear nueva app: ng new my-app
-	- abrir el servidor: ng serve --open
-	- crear componentes: ng g c paginas/inicio
+	- Crear nueva app: ng new my-app
+	- Abrir el servidor: ng serve --open
+	- Crear componentes: ng g c paginas/inicio
 	- Crear directivas: ng g d directivas/subrayar
-	- Crear filtros: ng g pipe pipes/animales	
-
+	- Crear filtros: ng g pipe pipes/animales
+	- Crear servicio: ng g s services/tareas
+	- Abrir puerto para ver json: json-server --watch db.json --> http://localhost:3000/tareas (elegimos el json que necesitemos)
+	
 	- Could not find module "@angular-devkit/build-angular" from... (angularFrutas 08/02/2020) --> npm install --save-dev @angular-devkit/build-angular	
 
 -------------------------------------------------------------------
@@ -348,10 +350,9 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
   		],
 
 
-	- para ver el .json que acabamos de crear: json-server --watch db.json --> http://localhost:3000/tareas
-
-crear servicio --> ng g s services/tareas
-ng g c paginas/tareas
+	- Creamos servicio: ng g s services/tareas
+	- Abrir puerto para ver json que acabamos de crear: json-server --watch db.json --> http://localhost:3000/tareas
+	- Creamos página para tareas : ng g c paginas/tareas
 
 en el inspector del navegador --> network --> XHR (son las peticiones ajax)
 

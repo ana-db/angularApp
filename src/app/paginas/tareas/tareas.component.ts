@@ -12,6 +12,7 @@ export class TareasComponent implements OnInit {
   tareas: Array<Tarea>; //1) array de tareas
   tituloNuevo: string;
 
+  /*
   alertaTareaCreada: boolean;
   alertaEstadoEditado: boolean;
   alertaTareaEliminada: boolean;
@@ -20,7 +21,10 @@ export class TareasComponent implements OnInit {
   tituloTareaEliminada: string;
   tituloTareaEditada: string;
   tituloTareaNueva: string;
+  */
   mensaje: string;
+  idTareaMensaje: string; 
+  tituloTareaMensaje: string;
   
 
   constructor( private servicioTarea: TareasService ) { //4) inyectamos private servicioTarea: TareasService, para llamar al servicio rest
@@ -30,6 +34,7 @@ export class TareasComponent implements OnInit {
     this.tareas = []; //2) incializamos el array vacio en el constructor
     this.tituloNuevo = '';
 
+    /*
     this.alertaTareaCreada = false;
     this.alertaEstadoEditado = false;
     this.alertaTareaEliminada = false;
@@ -38,7 +43,10 @@ export class TareasComponent implements OnInit {
     this.tituloTareaEliminada = '';
     this.tituloTareaEditada = '';
     this.tituloTareaNueva = '';
+    */
     this.mensaje = '';
+    this.idTareaMensaje = '';
+    this.tituloTareaMensaje = '';
 
   } //fin constructor
 
@@ -61,8 +69,11 @@ export class TareasComponent implements OnInit {
 
     this.servicioTarea.modificar(tarea).subscribe( () => this.cargarTareas() ); //como no vamos usar los datos que devuelve el método, podemos poner () delante de =>. Es decir, la tarea modifica no la vamos a usar, sólo visualizar
 
-    this.alertaEstadoEditado = true; 
-    this.tituloTareaEditada = tarea.titulo;
+    /* this.alertaEstadoEditado = true; 
+    this.tituloTareaEditada = tarea.titulo; */
+    this.mensaje = 'Has modificado el estado de la tarea con ';
+    this.idTareaMensaje = `id ${tarea.id} `;
+    this.tituloTareaMensaje = `y titulo ${tarea.titulo}`;
 
   } //fin editarEstado
 
@@ -95,14 +106,19 @@ export class TareasComponent implements OnInit {
 
     if( confirm('¿Estás seguro de que quieres eliminar esta tarea?') ){
       console.trace('Eliminación confirmada');
+      /*
       this.idEliminado = tarea.id;
       this.tituloTareaEliminada = tarea.titulo;
+      */
+      this.mensaje = 'Has eliminado la tarea con ';
+      this.idTareaMensaje = `id ${tarea.id} `;
+      this.tituloTareaMensaje = `y titulo ${tarea.titulo}`;
       this.servicioTarea.eliminar(tarea.id).subscribe( () => this.cargarTareas() ); 
     }else{
       console.trace('Eliminación cancelada');
     } 
 
-    this.alertaTareaEliminada = true;
+    //this.alertaTareaEliminada = true;
 
   } //fin eliminarTarea
 
@@ -114,7 +130,7 @@ export class TareasComponent implements OnInit {
     //creamos un objeto tarea nuevo:
     const tareaNueva = new Tarea();
     
-    if ( this.tituloNuevo.length > 1 ){
+    if ( this.tituloNuevo.trim().length > 1){
       tareaNueva.titulo = this.tituloNuevo;
       console.debug('Tarea nueva %o', tareaNueva);
 
@@ -122,9 +138,15 @@ export class TareasComponent implements OnInit {
         console.debug('Nueva tarea creada en json-server %o', datos);
         this.tituloNuevo = ''; //limpiamos input text
         this.cargarTareas();
+
+        this.mensaje = 'Has creado una tarea nueva con ';
+        this.idTareaMensaje = `id ${datos.id} `;
+        this.tituloTareaMensaje = `y titulo ${datos.titulo}`;
       });
+      /*
       this.alertaTareaCreada = true;
       this.tituloTareaNueva = tareaNueva.titulo;
+      */
     }else{
       this.mensaje = 'El titulo de la tarea no es válido, debe contener al menos 2 caracteres';
     } 
