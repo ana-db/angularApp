@@ -1,4 +1,18 @@
 <h2>Tareas</h2>
 <p>Ejemplo de Provider o Servicio para hacer un CRUD completo contra un Servicio Rest</p>
 
-{{tareas | json}}
+<!-- {{tareas | json}} -->
+
+
+<ul>
+    <li *ngFor = "let tarea of tareas">
+        <b>{{tarea.id}}</b>
+        <!-- {{tarea.completada}} -->
+        <!-- en función de si la tarea está completada o no, nos pondrá la clase completada -->
+        <span class="titulo {{ (tarea.completada) ? 'completada' : '' }}">{{tarea.titulo}}</span>
+    </li>
+</ul>
+
+
+<img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=748&q=80" alt="tareas">
+

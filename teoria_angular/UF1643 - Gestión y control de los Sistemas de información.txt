@@ -354,6 +354,32 @@ ng g c paginas/tareas
 
 en el inspector del navegador --> network --> XHR (son las peticiones ajax)
 
+	- librería RxJS para observables (es programación reactiva) --> https://rxjs-dev.firebaseapp.com/
+	- El "por qué" de los observables
+		- "Observable", que básicamente nos ahorra tener que hacer consultas repetitivas de acceso a la fuente de información, aumentando el rendimiento de las aplicaciones.
+	- Programación reactiva	
+		- Programación tradicional
+
+			let a = 1;
+let b = 3;
+let resultado = a + b; // resultado vale 4
+// Más tarde en las instrucciones... 
+a = 7; // Asignamos otro valor a la variable a
+// Aunque se cambie el valor de "a", resultado sigue valiendo 4,
+
+			en programación reactiva, resultado = 10
+
+		- Programación reactiva y los flujos de datos
+			En la programación reactiva se tienen muy en cuenta esos flujos de datos, creando sistemas que son capaces de consumirlos de distintos modos, fijándose en lo que realmente les importa de estos streams y desechando lo que no. Para ello se dispone de diversas herramientas que permiten filtrar los streams, combinarlos, crear unos streams a partir de otros, etc. --> funciones map, filter, reduce...
+
+		- Observables y programación reactiva
+			- Observable
+			- Observer: es el typescript, cuando nos subscribimos al observable
+			- Subject
+
+		- Qué es RxJS
+			- librería para implementar programación reactiva que hacen uso del patrón observable
+			- get, put, post, delete devuelven observables de cualquier tipo
 
 
 
