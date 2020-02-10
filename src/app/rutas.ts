@@ -59,6 +59,12 @@ export const RUTAS =
         'ruta' : '/comparador',
         'nombre' : 'Comparador',
         'icono' : 'fas fa-not-equal'
+    },
+
+    {
+        'ruta' : '/tareas',
+        'nombre' : 'Tareas',
+        'icono' : 'fas fa-tasks'
     }
 
 ];

@@ -326,5 +326,39 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
 
 
+-------------------------------------------------------------------
+
+
+10/02/2020
+
+
+- Observables
+	- se usan con el servicio rest para hacer llamadas asíncronas
+	- db.json: 
+		//nuevo array de tareas:
+  		"tareas": [
+    		//objeto json:
+    			{
+      			"id": 1,
+      			"titulo": "",
+      			"completada": true
+    			}
+
+  		],
+
+
+	- para ver el .json que acabamos de crear: json-server --watch db.json --> http://localhost:3000/tareas
+
+crear servicio --> ng g s services/tareas
+ng g c paginas/tareas
+
+en el inspector del navegador --> network --> XHR (son las peticiones ajax)
+
+
+
+
+
+
+
 
 
