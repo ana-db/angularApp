@@ -11,6 +11,7 @@ comandos:
 	- Crear filtros: ng g pipe pipes/animales
 	- Crear servicio: ng g s services/tareas
 	- Abrir puerto para ver json: json-server --watch db.json --> http://localhost:3000/tareas (elegimos el json que necesitemos)
+	- Crear guarda: ng g g guards/login --> seleccionar con el espacio la opción de canActivate e intro
 	
 	- Could not find module "@angular-devkit/build-angular" from... (angularFrutas 08/02/2020) --> npm install --save-dev @angular-devkit/build-angular	
 
@@ -417,31 +418,56 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
 11/02/2020
 
+Vamos a habilitar una zona privada a la que sólo se podrá entrar si se tienen permisos (login)
 
-ng g g guards/login --> seleccionar con el espacio la de canactivate e intro
-zona privada con guarda para proteger 
+1) Creamos una página "privado" y la protegemos creando una guarda:
+	- ng g c paginas/privado --> de momento sólo usamos el .html para escribir un poco de teoría
+	- Para proteger el acceso a esta ruta debemos usar una GUARDA / GUARD y definirla en el routing:
+		{ path: 'privado', component: PrivadoComponent, canActivate: [LoginGuard] }
+		canActivate: Guarda para indicar si se puede ativar esa ruta
+		LoginGuard: Guarda creada por nosotros, que devuelve un true (sí tenemos permisos para entrar) o un false (no tenemos permisos para activarlo)
+	- creamos guarda: ng g g guards/login --> seleccionar con el espacio la opción de canActivate e intro
+		login.guard.ts :
+		//para poder redireccionar al usuario (si sus credenciales no son correctas), necesitamos inyectarlo en el constructor
+  		constructor( private router : Router, private usuarioService: UsuarioService){
+		    console.debug('LoginGuard constructor');
+		}//fin constructor
 
+2) Creamos una clase usuario.ts (con id, nombre y password), una interfaz IUsuario.service.ts y usuario.service.ts para implementar la interfaz
 
 ng g c paginas/login
 
-
 ng g s services/usuario 
 
-
-privado.component.html
+privado.component.html .ts y .scss
 login.guard.ts
 usuario.ts
 usuario.service.ts
 IUsuario.service.ts
 
-login.component
+login.component.html .ts y .scss
 
 
-- Formularios reactivos
+3) Formularios reactivos: 
+	- creamos página de login: login.component.html .ts y .scss
+	- Son mejores para formularios en los que queremos aplicar validaciones y habilitar/deshabilitar el botón de submit
+	- [(ngModel)] está bien para cosas más sencillas
 
-
-	comentario github: privado con guarda para proteger e inicio login
-
+	- Cosas importantes cuando usamos formularios reactivos:
+		- Formulario de tipo FormGroup --> 
+			(.ts) formulario: FormGroup;
+		- Hay que importar el módulo de angular ReactiveFormsModule en 2 sitios dentro de app.modules.ts:
+			1) import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+			2) imports: [
+    				BrowserModule,
+    				HttpClientModule, //módulo para llamadas por http
+    				FormsModule, //módulo para usar formularios con banana in a box
+    				ReactiveFormsModule, //módulo para usar formularios reactivos
+    				AppRoutingModule
+  			]
+		- Inyectar en el constructor: private builder: FormBuilder --> 
+			(.ts) constructor( private builder: FormBuilder) {} (y lo importamos en el ts claro, import { FormGroup, FormBuilder, Validators } from '@angular/forms';)
+		- FormControl = input
 
 	- https://angular.io/api/forms/FormControl: 
 		- value: any
@@ -450,3 +476,5 @@ login.component
   		- dirty: boolean
   		- touched: boolean
   		- untouched: boolean
+
+comentario github con todo lo que hemos hecho hasta ahora: privado con guarda para proteger e inicio login
