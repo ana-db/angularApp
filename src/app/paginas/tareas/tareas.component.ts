@@ -12,19 +12,11 @@ export class TareasComponent implements OnInit {
   tareas: Array<Tarea>; //1) array de tareas
   tituloNuevo: string;
 
-  /*
-  alertaTareaCreada: boolean;
-  alertaEstadoEditado: boolean;
-  alertaTareaEliminada: boolean;
-  
-  idEliminado: number;
-  tituloTareaEliminada: string;
-  tituloTareaEditada: string;
-  tituloTareaNueva: string;
-  */
   mensaje: string;
   idTareaMensaje: string; 
   tituloTareaMensaje: string;
+  showMensaje: boolean;
+  modoEdicion: boolean;
   
 
   constructor( private servicioTarea: TareasService ) { //4) inyectamos private servicioTarea: TareasService, para llamar al servicio rest
@@ -34,19 +26,12 @@ export class TareasComponent implements OnInit {
     this.tareas = []; //2) incializamos el array vacio en el constructor
     this.tituloNuevo = '';
 
-    /*
-    this.alertaTareaCreada = false;
-    this.alertaEstadoEditado = false;
-    this.alertaTareaEliminada = false;
-  
-    this.idEliminado = 0;
-    this.tituloTareaEliminada = '';
-    this.tituloTareaEditada = '';
-    this.tituloTareaNueva = '';
-    */
     this.mensaje = '';
     this.idTareaMensaje = '';
     this.tituloTareaMensaje = '';
+    this.showMensaje = false;
+
+    this.modoEdicion = false;
 
   } //fin constructor
 
@@ -67,13 +52,13 @@ export class TareasComponent implements OnInit {
 
     tarea.completada = !tarea.completada; //cambiamos el estado de la tarea
 
-    this.servicioTarea.modificar(tarea).subscribe( () => this.cargarTareas() ); //como no vamos usar los datos que devuelve el método, podemos poner () delante de =>. Es decir, la tarea modifica no la vamos a usar, sólo visualizar
-
-    /* this.alertaEstadoEditado = true; 
-    this.tituloTareaEditada = tarea.titulo; */
-    this.mensaje = 'Has modificado el estado de la tarea con ';
-    this.idTareaMensaje = `id ${tarea.id} `;
-    this.tituloTareaMensaje = `y titulo ${tarea.titulo}`;
+    this.servicioTarea.modificar(tarea).subscribe( () => {
+      this.mensaje = 'Has modificado el estado de la tarea con ';
+      this.idTareaMensaje = `id ${tarea.id} `;
+      this.tituloTareaMensaje = `y titulo ${tarea.titulo}`;
+      this.showMensaje = true;
+      this.cargarTareas();
+    }); //como no vamos usar los datos que devuelve el método, podemos poner () delante de =>. Es decir, la tarea modifica no la vamos a usar, sólo visualizar
 
   } //fin editarEstado
 
@@ -93,11 +78,12 @@ export class TareasComponent implements OnInit {
       this.tareas = datos; //asginamos los datos a las tareas
     },
     (error) => {
-      console.debug('El json-server se ha detenido', error);
-      this.mensaje = 'Error de conexión: el json-server se ha detenido y no se puede conectar con él';
+      console.warn('El servicio Rest no funciona', error);
+      this.mensaje = 'Error de conexión: el servicio rest no funciona. Posiblemente el json-server no esté arrancado';
+      this.showMensaje = true;
     } ); 
 
-  }
+  } //fin cargarTareas
 
 
   eliminarTarea(tarea: Tarea){
@@ -106,19 +92,17 @@ export class TareasComponent implements OnInit {
 
     if( confirm('¿Estás seguro de que quieres eliminar esta tarea?') ){
       console.trace('Eliminación confirmada');
-      /*
-      this.idEliminado = tarea.id;
-      this.tituloTareaEliminada = tarea.titulo;
-      */
-      this.mensaje = 'Has eliminado la tarea con ';
-      this.idTareaMensaje = `id ${tarea.id} `;
-      this.tituloTareaMensaje = `y titulo ${tarea.titulo}`;
-      this.servicioTarea.eliminar(tarea.id).subscribe( () => this.cargarTareas() ); 
+      
+      this.servicioTarea.eliminar(tarea.id).subscribe( () =>{
+        this.mensaje = 'Has eliminado la tarea con ';
+        this.idTareaMensaje = `id ${tarea.id} `;
+        this.tituloTareaMensaje = `y titulo ${tarea.titulo}`;
+        this.showMensaje = true;
+        this.cargarTareas();
+      } ); 
     }else{
       console.trace('Eliminación cancelada');
     } 
-
-    //this.alertaTareaEliminada = true;
 
   } //fin eliminarTarea
 
@@ -142,16 +126,19 @@ export class TareasComponent implements OnInit {
         this.mensaje = 'Has creado una tarea nueva con ';
         this.idTareaMensaje = `id ${datos.id} `;
         this.tituloTareaMensaje = `y titulo ${datos.titulo}`;
+        this.showMensaje = true;
       });
-      /*
-      this.alertaTareaCreada = true;
-      this.tituloTareaNueva = tareaNueva.titulo;
-      */
     }else{
       this.mensaje = 'El titulo de la tarea no es válido, debe contener al menos 2 caracteres';
     } 
   
   } //fin crearTarea
+
+
+  cambiarTitulo(tarea : Tarea): void{
+    console.debug('loose focus para editar titulo de la tarea %o', tarea);
+    this.servicioTarea.modificar(tarea).subscribe( () => this.cargarTareas() ); 
+  }// fin cambiarTitulo
 
 
 }//fin TareasComponent

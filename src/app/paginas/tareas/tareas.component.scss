@@ -3,6 +3,7 @@ h2{
     padding-bottom: 10px;
 }
 
+/*
 .lista-tareas{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -16,7 +17,7 @@ li{
         margin-left: 10px;
     }
 
-    span.completada{
+    input[type="text"].completada{
         text-decoration: line-through;
         font-weight: 100;
         color: rgb(109, 100, 100);
@@ -27,17 +28,96 @@ li{
     background-image: url("https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
     background-repeat: no-repeat, repeat;
     object-fit: cover;
+    
     padding-top: 100px;
     padding-bottom: 100px;
     padding-left: 200px;
-    padding-right: 190px;
+    padding-right: 200px;
+    
 }
 
 .row{
     background-color: rgba($color: white, $alpha: 0.5);
 }
-
+*/
 p{
     background-color: rgba($color: white, $alpha: 0.5);
     padding: 10px;
 }
+/*
+.panel-tareas{
+
+    .crear{
+        display: flex;
+        margin-bottom: 1rem;
+    }
+
+}
+*/
+
+
+//NUEVO 11/02/2020 CORRIGIENDO:
+.principal{
+
+    background: url('/assets/imagenes/tareas.jpg') no-repeat center center;  //background: url('/assets/imagenes/tareas.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 120vh;
+}
+
+.panel-tareas {
+    width: 45vw;
+    margin: auto;
+    background-color: rgba($color: white, $alpha: 0.5);
+    padding: 20px;
+
+    .crear {
+        display: flex;
+        margin-bottom: 1rem;
+
+        buttton {
+            width: 20;
+        }
+
+        .btn {
+            background-color: #72826F;
+            border-color: #72826F;
+        }
+
+        input[type="checkbox"] { //para hacer más grandes los tics
+            width: 30px;
+            height: 30px;
+        } 
+    }
+
+}
+
+
+li {
+
+    list-style: none;
+    display: flex;
+
+    &:hover {
+        background-color: rgba(255,0,0, 0.3);
+    }
+
+    input[type="text"] {
+        flex-grow: 2;
+    }
+
+    input[type="text"].titulo{
+        font-weight: 500;
+        margin-left: 10px;
+    }
+
+    input[type="text"].completada{
+        text-decoration: line-through;
+        font-weight: 100;
+        color: rgb(119, 113, 113);
+    }
+
+}
+
