@@ -64,7 +64,7 @@ p{
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    min-height: 120vh;
+    min-height: 135vh;
 }
 
 .panel-tareas {
@@ -77,8 +77,8 @@ p{
         display: flex;
         margin-bottom: 1rem;
 
-        buttton {
-            width: 20;
+        button { //damos un ancho al botón
+            width: 230px;
         }
 
         .btn {
@@ -86,38 +86,45 @@ p{
             border-color: #72826F;
         }
 
-        input[type="checkbox"] { //para hacer más grandes los tics
-            width: 30px;
-            height: 30px;
-        } 
     }
+
+    input[type="checkbox"] { //para hacer más grandes los tics
+        width: 30px;
+        height: 30px;
+    } 
 
 }
 
 
-li {
+ul {
+        
+    padding: 0;
 
-    list-style: none;
-    display: flex;
+    li {
 
-    &:hover {
-        background-color: rgba(255,0,0, 0.3);
-    }
+        list-style: none;
+        display: flex;
+        margin-bottom: 5px;
 
-    input[type="text"] {
-        flex-grow: 2;
-    }
+        &:hover {
+            background-color: #72826F;
+        }
 
-    input[type="text"].titulo{
-        font-weight: 500;
-        margin-left: 10px;
-    }
+        input[type="text"] {
+            flex-grow: 2;
+            margin-right: 10px; //dejamos un pequeño margen entre el input del texto y la papelera
+        }
 
-    input[type="text"].completada{
-        text-decoration: line-through;
-        font-weight: 100;
-        color: rgb(119, 113, 113);
-    }
+        input[type="text"].titulo{
+            font-weight: 500;
+            margin-left: 10px;
+        }
 
-}
+        input[type="text"].completada{
+            text-decoration: line-through;
+            font-weight: 100;
+            color: rgb(119, 113, 113);
+        }
+    } //fin li
+} //fin ul
 
