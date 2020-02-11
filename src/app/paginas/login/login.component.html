@@ -1,57 +1,59 @@
 <div class="principal">
 
-<h1 class="my-3 text-center text-secondary">Inciar sesión</h1>
-<h2 class="my-3 text-center">Formulario Reactivo</h2>
-<p class="text-secondary">Acordarse de importar <b><code>ReactiveFormsModule</code></b> en <b><code>app.module.ts</code></b></p>
+    <div class="presentacion">
+        <h1 class="my-3 text-center">Iniciar sesión</h1>
+        <h2 class="my-3 text-center">Formulario Reactivo</h2>
+        <p class="text-secondary">IMPORTANTE!! Acordarse de importar <b><code>ReactiveFormsModule</code></b> en <b><code>app.module.ts</code></b></p>
+    </div>
 
-<div class="row justify-content-center align-items-center"> <!-- para centrar el fomulario necesitamos que esté dentro de las clases row y col -->
+    <div class="row justify-content-center align-items-center"> <!-- para centrar el fomulario necesitamos que esté dentro de las clases row y col -->
 
-    <div class="col">
-        <h3 class="my-3 text-center">Formulario Reactivo</h3>
+        <div class="col">
+            <h3 class="my-3 text-center">Formulario Reactivo</h3>
 
-        <pre>{{ formulario.value | json }}</pre>
-        <pre>{{ formulario.status | json }}</pre>
+            <pre>{{ formulario.value | json }}</pre>
+            <pre>{{ formulario.status | json }}</pre>
 
-        <form [formGroup]="formulario" (ngSubmit)="enviar(formulario.value)">
+            <form [formGroup]="formulario" (ngSubmit)="enviar(formulario.value)">
 
-            <label for="name">Nombre</label>
-            <input type="text" formControlName="nombre" class="form-control" autofocus required placeholder="Escribe tu nombre"> <!-- <input type="text" formControlName="nombre" /> -->
-            <small *ngIf="formulario.controls.nombre.invalid && formulario.controls.nombre.dirty"
-                class="text-danger">Mínimo 2 carácteres y máximo 100</small>
-                <!-- formulario.controls.nombre.invalid para sacar el mensaje sólo cuando el texto no sea correcto
-                     formulario.controls.nombre.dirty para que el mensaje no salga por pantalla al entrar en la página -->
-            <small *ngIf="formulario.controls.nombre.valid" class="text-success">Nombre correcto</small>
+                <label for="name">Nombre</label>
+                <input type="text" formControlName="nombre" class="form-control" autofocus required placeholder="Escribe tu nombre"> <!-- <input type="text" formControlName="nombre" /> -->
+                <small *ngIf="formulario.controls.nombre.invalid && formulario.controls.nombre.dirty"
+                    class="text-danger">Mínimo 2 carácteres y máximo 100</small>
+                    <!-- formulario.controls.nombre.invalid para sacar el mensaje sólo cuando el texto no sea correcto
+                        formulario.controls.nombre.dirty para que el mensaje no salga por pantalla al entrar en la página -->
+                <small *ngIf="formulario.controls.nombre.valid" class="text-success">Nombre correcto</small>
 
+                <br>
+                <label for="pass">Password</label>
+                <input type="text" formControlName="pass" class="form-control" required placeholder="Escribe tu contraseña"> <!--  <input type="text" formControlName="pass" /> --> 
+                <small *ngIf="formulario.controls.pass.invalid && formulario.controls.pass.dirty"
+                    class="text-danger">Mínimo 6 carácteres y máximo 8</small>
+                <small *ngIf="formulario.controls.pass.valid" class="text-success">Password correcto</small>
+
+                <br>
+                <input type="submit" class="btn btn-secondary btn-block" [disabled]="formulario.invalid" value="Enviar" />
+            
+            </form> <!-- fin form -->
+        </div> <!-- fin col 1 -->
+
+
+        <div class="col">
+
+            <h3 class="my-3 text-center">FormControl</h3>
+            <a href="https://angular.io/api/forms/FormControl" target="_blank">Documentación oficial</a>
             <br>
-            <label for="pass">Password</label>
-            <input type="text" formControlName="pass" class="form-control" required placeholder="Escribe tu contraseña"> <!--  <input type="text" formControlName="pass" /> --> 
-            <small *ngIf="formulario.controls.pass.invalid && formulario.controls.pass.dirty"
-                 class="text-danger">Mínimo 6 carácteres y máximo 8</small>
-            <small *ngIf="formulario.controls.pass.valid" class="text-success">Password correcto</small>
-
             <br>
-            <input type="submit" class="btn btn-secondary btn-block" [disabled]="formulario.invalid" value="Enviar" />
-        
-        </form> <!-- fin form -->
-    </div> <!-- fin col 1 -->
+            <pre>valid: {{ formulario.controls.pass.valid | json }}</pre>
+            <pre>invalid: {{ formulario.controls.pass.invalid | json }}</pre>      
+            <pre>dirty: {{ formulario.controls.pass.dirty | json }}</pre>      
+            <pre>pristine: {{ formulario.controls.pass.pristine | json }}</pre>      
+            <pre>touched: {{ formulario.controls.pass.touched | json }}</pre>      
+            <pre>untouched: {{ formulario.controls.pass.untouched | json }}</pre>      
+            <pre>Errors: {{ formulario.controls.pass.errors | json }}</pre> 
 
+        </div> <!-- fin col 2 -->
 
-    <div class="col">
-
-        <h3 class="my-3 text-center">FormControl</h3>
-        <a href="https://angular.io/api/forms/FormControl" target="_blank">Documentación oficial</a>
-        <br>
-        <br>
-        <pre>valid: {{ formulario.controls.pass.valid | json }}</pre>
-        <pre>invalid: {{ formulario.controls.pass.invalid | json }}</pre>      
-        <pre>dirty: {{ formulario.controls.pass.dirty | json }}</pre>      
-        <pre>pristine: {{ formulario.controls.pass.pristine | json }}</pre>      
-        <pre>touched: {{ formulario.controls.pass.touched | json }}</pre>      
-        <pre>untouched: {{ formulario.controls.pass.untouched | json }}</pre>      
-        <pre>Errors: {{ formulario.controls.pass.errors | json }}</pre> 
-
-    </div> <!-- fin col 2 -->
-
-</div> <!-- fin row -->
+    </div> <!-- fin row -->
 
 </div> <!-- fin principal -->

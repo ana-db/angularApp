@@ -8,10 +8,26 @@
     min-height: 120vh;
 }
 
-
-.col {
-    //width: 45vw;
-    //margin: auto;
+.row {
+    width: 75vw; //damos un ancho
+    margin: auto; //centra la clase en la pantalla
     background-color: rgba($color: white, $alpha: 0.7);
-    padding: 20px;
+    padding: 15px;
+}
+
+.presentacion {
+    width: 75vw; //damos un ancho
+    margin: auto; //centra la clase en la pantalla
+    background-color: rgba($color: white, $alpha: 0.7);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+p.text-secondary{
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+div.principal{
+    margin-top: 15px;
 }
