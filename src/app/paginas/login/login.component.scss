@@ -1,0 +1,17 @@
+.principal{
+
+    background: url('/assets/imagenes/login.jpg') no-repeat center center;  //background: url('/assets/imagenes/tareas.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 120vh;
+}
+
+
+.col {
+    //width: 45vw;
+    //margin: auto;
+    background-color: rgba($color: white, $alpha: 0.7);
+    padding: 20px;
+}

@@ -440,5 +440,13 @@ login.component
 - Formularios reactivos
 
 
-comentario github: zona privada con guarda para proteger y login usuario
+	comentario github: privado con guarda para proteger e inicio login
 
+
+	- https://angular.io/api/forms/FormControl: 
+		- value: any
+		- valid: boolean
+		- pristine: boolean
+  		- dirty: boolean
+  		- touched: boolean
+  		- untouched: boolean

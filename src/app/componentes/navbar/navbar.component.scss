@@ -1,3 +1,19 @@
 .active{
     border-bottom: 2px solid teal;
 }
+
+.navbar-collapse{ //contiene la lista de ul
+    text-align: center; //centramos los ul
+}
+
+.navbar-nav{ //navbar-nav son los ul - centramos la lista de links
+    display: inline-block; //si tiene espacio disponible, se distribuye por todo él y si no, se adapta al tamaño
+    text-align: center; //centramos los li
+}
+
+.nav-item{ //nav-item son los li - distribuir en línea los links
+    display: inline-block; //si tiene espacio disponible, se distribuye por todo él y si no, se adapta al tamaño
+    text-align: center; //centramos el texto de los li
+    padding: 5px;
+}
+
