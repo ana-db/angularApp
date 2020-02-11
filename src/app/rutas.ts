@@ -65,6 +65,18 @@ export const RUTAS =
         'ruta' : '/tareas',
         'nombre' : 'Tareas',
         'icono' : 'fas fa-tasks'
+    },
+
+    {
+        'ruta' : '/privado',
+        'nombre' : 'Privado',
+        'icono' : 'fas fa-user-lock'
+    },
+
+    {
+        'ruta' : '/login',
+        'nombre' : 'Iniciar sesion',
+        'icono' : 'fas fa-key'
     }
 
 ];

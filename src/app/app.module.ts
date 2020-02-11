@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -24,7 +24,9 @@ import { BuscadorRecetasPipe } from './pipes/buscador-recetas.pipe';
 import { Error404Component } from './paginas/error404/error404.component';
 import { SaludarComponent } from './paginas/saludar/saludar.component';
 import { ComparadorComponent } from './paginas/comparador/comparador.component';
-import { TareasComponent } from './paginas/tareas/tareas.component';    //módulo para llamadas por http
+import { TareasComponent } from './paginas/tareas/tareas.component';
+import { PrivadoComponent } from './paginas/privado/privado.component';
+import { LoginComponent } from './paginas/login/login.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -48,12 +50,15 @@ import { TareasComponent } from './paginas/tareas/tareas.component';    //módul
     Error404Component,
     SaludarComponent,
     ComparadorComponent,
-    TareasComponent
+    TareasComponent,
+    PrivadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule, //módulo para llamadas por http
-    FormsModule, //módulo para usar formularios
+    FormsModule, //módulo para usar formularios con banana in a box
+    ReactiveFormsModule, //módulo para usar formularios reactivos
     AppRoutingModule
   ],
   providers: [],

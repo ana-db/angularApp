@@ -412,9 +412,33 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 		- Una suscripción: generada a partir del observable.
 
 
+-------------------------------------------------------------------
 
 
+11/02/2020
 
 
+ng g g guards/login --> seleccionar con el espacio la de canactivate e intro
+zona privada con guarda para proteger 
 
+
+ng g c paginas/login
+
+
+ng g s services/usuario 
+
+
+privado.component.html
+login.guard.ts
+usuario.ts
+usuario.service.ts
+IUsuario.service.ts
+
+login.component
+
+
+- Formularios reactivos
+
+
+comentario github: zona privada con guarda para proteger y login usuario
 

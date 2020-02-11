@@ -1,0 +1,28 @@
+<h1 class="my-3 text-center text-secondary">Inciar sesión</h1>
+<h2 class="my-3 text-center">Formulario Reactivo</h2>
+<p class="text-secondary">Acordarse de importar <b><code>ReactiveFormsModule</code></b> en <b><code>app.module.ts</code></b></p>
+
+
+<div class="row justify-content-center align-items-center"> <!-- para centrar el fomulario necesitamos que esté dentro de las clases row y col -->
+
+    <div class="col">
+        <h3 class="my-3 text-center">Formulario Reactivo</h3>
+        <form [formGroup]="formulario" (ngSubmit)="enviar(formulario.value)">
+            <label for="name">Nombre</label>
+            <input type="text" formControlName="nombre" class="form-control" autofocus required pattern=".{2,100}" placeholder="Escribe tu nombre (mín 2, máx 100)"> <!-- <input type="text" formControlName="nombre" /> -->
+            <br>
+            <label for="pass">Password</label>
+            <input type="text" formControlName="pass" class="form-control" required pattern=".{5,8}" placeholder="Contraseña (mín 5, máx 8)"> <!--  <input type="text" formControlName="pass" /> --> 
+            <br>
+            <input type="submit" class="btn btn-secondary" [disabled]="formulario.invalid" value="Enviar" />
+        </form> <!-- fin form -->
+    </div> <!-- fin col 1 -->
+
+
+    <div class="col">
+        <h3 class="my-3 text-center">Datos y estado</h3>
+        <pre>{{ formulario.value | json }}</pre>
+        <pre>{{ formulario.status | json }}</pre>
+    </div> <!-- fin col 2 -->
+
+</div> <!-- fin row -->
