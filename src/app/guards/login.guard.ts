@@ -23,16 +23,14 @@ export class LoginGuard implements CanActivate {
     const logeado: boolean = this.usuarioService.estaLogeado();
 
     if( !logeado ){
-      this.router.navigate(['login']);
+      this.router.navigate(['login']); //si el usurio no tiene permisos, le redireccionamos al login
     }
 
     //TODO si el usuario no se ha logeado false, en cso contrario true
-    //TODO crear providero servicio para login de usuario
+    //TODO crear provider o servicio para login de usuario
     //TODO servicio rest contra mySql (200 ok, 404 el usuario no existe)
 
-    this.router.navigate(['login']); //si el usurio no tiene permisos, le redireccionamos al login
-
-    return false; //si devuleve un false, no podemos entrar en la pagina "privado"
+    return logeado; //si devuleve un false, no podemos entrar en la pagina "privado"
   }// fin canActivate
   
 }

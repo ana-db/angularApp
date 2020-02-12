@@ -478,3 +478,14 @@ login.component.html .ts y .scss
   		- untouched: boolean
 
 comentario github con todo lo que hemos hecho hasta ahora: privado con guarda para proteger e inicio login
+
+
+12/02/2020
+
+4) Login funcionando y habilitada la zona privada y cerrar sesión sólo si el usuario está logeado:
+	- rutas.ts
+	- navbar.component.html y navbar.component.ts
+	- login.guard.ts
+	- login.component.ts
+	- usuario.service.ts
+	- comentario github: Login funcionando, backoffice y cerrar sesión

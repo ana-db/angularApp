@@ -21,20 +21,26 @@ export class UsuarioService implements IUsuarioService{
   estaLogeado(): boolean {
     console.trace('UsuarioService estaLogeado');
     return this.isLogged;
-  }
+  }//fin estaLogeado
 
 
+  /**
+   * Busca el usuario por nombre y password
+   * @param nombre del usuario que intenta logearse
+   * @param password del usuario que intenta logearse
+   * @return Usuario con datos si existe, undefined si no encuentra
+   */
   login(nombre: string, password: string): Usuario {
 
     console.trace('UsuarioService login nombre %s y password %s', nombre, password);
 
     const NOMBRE = 'admin';
-    const PASS = 'admin';
+    const PASS = 'admin123';
     let usuarioBuscar: Usuario; //si no entra en el if es undefined
 
     if( NOMBRE === nombre && PASS === password ){
       console.trace('usuario encontrado');
-      usuarioBuscar: new Usuario();
+      usuarioBuscar = new Usuario();
       usuarioBuscar.nombre= nombre;
       usuarioBuscar.password = password;
       usuarioBuscar.id = 99;
@@ -45,13 +51,12 @@ export class UsuarioService implements IUsuarioService{
       this.isLogged = false;
     }
 
-    this.isLogged = true;
     return usuarioBuscar; 
 
   }//fin login
 
 
-  cerrarSesion(idUsuario: number) {
+  cerrarSesion() {
     console.trace('UsuarioService cerrarSesion');
     this.isLogged = false;
   }
