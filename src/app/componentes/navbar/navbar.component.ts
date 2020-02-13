@@ -18,12 +18,13 @@ export class NavbarComponent implements OnInit {
               private usuarioService: UsuarioService ) { //inyectamos UsuarioService para poder habilitar/deshabilitar el link de la zona privada
     console.trace('NavbarComponent constructor');
     this.rutas = RUTAS;
-    this.isLogeado = usuarioService.estaLogeado(); //así mejoramos un poco el código evitando que por consola nos aparezca el mensaje de está logeado varias veces (tantas como veces llamamos a la función desde el navbar)
+    this.isLogeado = false; //así mejoramos un poco el código evitando que por consola nos aparezca el mensaje de está logeado varias veces (tantas como veces llamamos a la función desde el navbar)
   } //fin constructor
 
 
   ngOnInit() {
     console.trace('NavbarComponent ngOnInit');
+    this.isLogeado = this.usuarioService.estaLogeado(); //así mejoramos un poco el código evitando que por consola nos aparezca el mensaje de está logeado varias veces (tantas como veces llamamos a la función desde el navbar)
   } //fin ngOnInit
 
 

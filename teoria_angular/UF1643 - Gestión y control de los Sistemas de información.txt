@@ -479,6 +479,7 @@ login.component.html .ts y .scss
 
 comentario github con todo lo que hemos hecho hasta ahora: privado con guarda para proteger e inicio login
 
+-----
 
 12/02/2020
 
@@ -489,3 +490,15 @@ comentario github con todo lo que hemos hecho hasta ahora: privado con guarda pa
 	- login.component.ts
 	- usuario.service.ts
 	- comentario github: Login funcionando, backoffice y cerrar sesión
+
+-----
+
+13/02/2020
+
+- sessionStorage
+	- https://developer.mozilla.org/es/docs/Web/API/Window/sessionStorage
+	- La propiedad sessionStorage permite acceder a un objeto Storage asociado a la sesión actual. La propiedad sessionStorage es similar a localStorage, la única diferencia es que la información almacenada en localStorage no posee tiempo de expiración, por el contrario la información almacenada en sessionStorage es eliminada al finalizar la sesion de la página. La sesión de la página perdura mientras el navegador se encuentra abierto, y se mantiene por sobre las recargas y reaperturas de la página. Abrir una página en una nueva pestaña o ventana iniciará una nueva sesión, lo que difiere en la forma en que trabajan las cookies de sesión.
+
+	- Sintaxis:
+		sessionStorage.setItem('key', 'value'); // Almacena la información en sessionStorage
+		var data = sessionStorage.getItem('key'); // Obtiene la información almacenada desde sessionStorage
