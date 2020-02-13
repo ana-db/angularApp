@@ -502,3 +502,16 @@ comentario github con todo lo que hemos hecho hasta ahora: privado con guarda pa
 	- Sintaxis:
 		sessionStorage.setItem('key', 'value'); // Almacena la información en sessionStorage
 		var data = sessionStorage.getItem('key'); // Obtiene la información almacenada desde sessionStorage
+
+
+
+- Preparando filtro por habilidad pokemon con checkbox:
+	- Ver ejercicio arrays de angular App:
+
+	1) tenemos que quedarnos con las habilidades del pokemon:
+	this.colores = this.frutas.reduce( (p, c, i, a) => {
+      return p.concat(c.colores);   //va guardando en un array todos los colores que va encontrando en cada fruta (estarán repetidos)
+      }, [] ).filter( (el, index, array) => {  //con filter vamos recorriendo el array de colores y vamos guardando el 1ero que aparezca
+          console.debug(el, index, array);
+          return array.indexOf(el) === index;
+    });
