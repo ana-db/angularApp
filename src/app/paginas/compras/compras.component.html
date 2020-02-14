@@ -2,12 +2,12 @@
 
     <!-- listado -->
     <div class="col">
-        <app-listado></app-listado>
+        <app-listado (pasameFrutaEvento)="recogerEvento($event)"></app-listado>
     </div>
 
     <!-- detalle -->
     <div class="col">
-        <app-detalle></app-detalle>
+        <app-detalle [fruta]="frutaSeleccionada"></app-detalle>
     </div>
 
 </div>

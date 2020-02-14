@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Fruta } from 'src/app/model/frutas.model';
 
 @Component({
   selector: 'app-compras',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComprasComponent implements OnInit {
 
-  constructor() { }
+  frutaSeleccionada: Fruta;
+
+  constructor() {
+    this.frutaSeleccionada = new Fruta();
+   }
 
   ngOnInit() {
+    
+  }
+
+
+  recogerEvento(event){
+    console.debug('ComprasComponent componente padre y recibe la fruta');
+    this.frutaSeleccionada = event; //cuando recibimos el evento, es la porpia fruta seleccionada
   }
 
 }

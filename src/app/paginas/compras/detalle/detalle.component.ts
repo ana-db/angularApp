@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Fruta } from 'src/app/model/frutas.model';
 
 @Component({
@@ -8,11 +8,13 @@ import { Fruta } from 'src/app/model/frutas.model';
 })
 export class DetalleComponent implements OnInit {
 
-  fruta: Fruta;
+  @Input() fruta: Fruta; //es la fruta que le vamos a pasar //fruta: Fruta;
 
   constructor() {
+    /*
     this.fruta = new Fruta();
     this.fruta.nombre = 'Naranja';
+    */
    }
 
   ngOnInit() {
