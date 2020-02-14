@@ -16,6 +16,7 @@ import { TareasComponent } from './paginas/tareas/tareas.component';
 import { PrivadoComponent } from './paginas/privado/privado.component';
 import { LoginGuard } from './guards/login.guard';
 import { LoginComponent } from './paginas/login/login.component';
+import { ComprasComponent } from './paginas/compras/compras.component';
 
 /**
  * Definir las rutas de la app de angular
@@ -37,7 +38,8 @@ const routes: Routes = [
   {path: 'tareas', component: TareasComponent}, 
   //vamos a porteger esta ruta con una guarda:
   {path: 'privado', component: PrivadoComponent, canActivate: [LoginGuard]},  
-  {path: 'login', component: LoginComponent},                   
+  {path: 'login', component: LoginComponent},    
+  {path: 'componentes', component: ComprasComponent},                 
   {path: '**', component: Error404Component} //llega a esta pagina si hay algún error
 ];
 

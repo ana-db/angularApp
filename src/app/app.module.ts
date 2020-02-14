@@ -26,7 +26,10 @@ import { SaludarComponent } from './paginas/saludar/saludar.component';
 import { ComparadorComponent } from './paginas/comparador/comparador.component';
 import { TareasComponent } from './paginas/tareas/tareas.component';
 import { PrivadoComponent } from './paginas/privado/privado.component';
-import { LoginComponent } from './paginas/login/login.component';    //módulo para llamadas por http
+import { LoginComponent } from './paginas/login/login.component';
+import { ComprasComponent } from './paginas/compras/compras.component';
+import { ListadoComponent } from './paginas/compras/listado/listado.component';
+import { DetalleComponent } from './paginas/compras/detalle/detalle.component';    //módulo para llamadas por http
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { LoginComponent } from './paginas/login/login.component';    //módulo p
     ComparadorComponent,
     TareasComponent,
     PrivadoComponent,
-    LoginComponent
+    LoginComponent,
+    ComprasComponent,
+    ListadoComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,

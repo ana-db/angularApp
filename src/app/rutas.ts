@@ -65,9 +65,14 @@ export const RUTAS =
         'ruta' : '/tareas',
         'nombre' : 'Tareas',
         'icono' : 'fas fa-tasks'
-    }/*,
+    },
 
     {
+        'ruta' : '/componentes',
+        'nombre' : 'Input Output',
+        'icono' : 'fas fa-shopping-cart'
+    }
+    /* {
         'ruta' : '/privado',
         'nombre' : 'Privado',
         'icono' : 'fas fa-user-lock'
