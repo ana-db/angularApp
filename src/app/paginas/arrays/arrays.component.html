@@ -1,5 +1,6 @@
 <h2>Jugando con Arrays</h2>
 
+<!-- EJEMPLOS PARA APRENDER A UTILIZAR ARRAYS: MAP, FILTER, REDUCE, FIND -->
 <div class="row">
     <div class="col">
         <pre>
@@ -16,6 +17,37 @@
         <p>Precio total de las frutas amarillas: <b>{{precioTotalFrutasAmarillas}}</b></p>
         <p>Buscar 1a fruta verde (find()): <b>{{primeraFrutaVerde | json}}</b></p>
         <p>Array de colores: <b>{{colores}}</b></p>
+    </div>
+</div>
+
+
+<hr>
+<!-- FILTRO POR CHECKBOX DE COLORES -->
+<div class="row">
+    <div class="col-6">
+        <H3>Filtro por checkbox de colores</H3>
+        <div class="p-2 border border-primary">
+            <div class="form-group">
+                <label for="options">Filtrar por Colores:</label>
+                <button (click)="buscar(options)">Buscar</button>
+                <div *ngFor="let option of options">
+                    <label>
+                        <input type="checkbox"
+                               name="options"
+                               value="{{option.value}}"
+                               [(ngModel)]="option.checked"/>
+                        {{option.name}}
+                    </label>
+                </div>
+            </div>
+        </div>   
+
+        <ol class="list-group">
+            <li *ngFor="let f of frutas" class="list-group-item">
+                {{f.nombre}}
+                <span class="circulo {{c}}" *ngFor="let c of f.colores"></span>
+            </li>
+        </ol>
     </div>
 </div>
 

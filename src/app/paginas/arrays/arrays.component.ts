@@ -20,6 +20,10 @@ export class ArraysComponent implements OnInit {
   primeraFrutaVerde: Array<string>;
   colores: Array<string>;
 
+  //arrays neecsarios para implementar un filtro por checkbox de colores:
+  frutasOriginal: any;
+  options: Array<any>;
+
 
   constructor() { 
     console.trace(`ArraysComponent constructor`);
@@ -46,7 +50,12 @@ export class ArraysComponent implements OnInit {
       {'nombre': 'pera', 'precio': 3.50, 'descuento': 10, 'colores': ['amarillo', 'verde']},
       {'nombre': 'manzana', 'precio': 1.99, 'descuento': 50, 'colores': ['amarillo', 'verde','roja']}
     ];
+
+    //arrays neecsarios para implementar un filtro por checkbox de colores:
+    this.options = [];
+    this.frutasOriginal = this.frutas.slice(); // crear una copiar exacata del array, pero sin compartir memoria
   }
+
 
   ngOnInit() {
     console.trace(`ArraysComponent ngOnInit`);
@@ -114,9 +123,46 @@ export class ArraysComponent implements OnInit {
           console.debug(previous, current, index, array);
           return 
       }, 0 )
-      */
+      */ 
+
+
+
+    /* FILTRO POR CHECKBOX DE COLORES
+      vamos a mapear un Array<string> para conseguir la estructura deseada para los checkboxes:
+
+      colores = [
+        "rojo",
+        "amarillo", 
+        "verde"
+      ];
+
+      options = [
+        {name:'OptionA', value:'1', checked:true},
+        {name:'OptionB', value:'2', checked:false},
+        {name:'OptionC', value:'3', checked:true}
+      ]
+    */
+
+    this.options = this.colores.map( el => {
+      return  {name: el , value: el , checked: false};
+    });
+
   
-  }
+  } //fin ngOnInit
+
+
+  buscar( options) {
+    console.debug('buscar %o', options);
+    this.frutas = this.frutasOriginal.slice();
+    const coloresSeleccionados = this.options.filter( el => el.checked ).map( el => el.value);
+    console.debug('coloresSeleccionados %o', coloresSeleccionados);
+    if ( coloresSeleccionados.length > 0 ) {  // si no hay nada cheked apra que buscar
+      this.frutas = this.frutas.filter( el => {
+        console.debug('filtrando frutas');
+        return el.colores.find( color => coloresSeleccionados.indexOf(color) !== -1 );
+      });
+    }
+  }//buscar
     
 
-}
+} //fin ArraysComponent
