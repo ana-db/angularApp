@@ -8,14 +8,14 @@ import { Usuario } from '../model/usuario';
 export class UsuarioService implements IUsuarioService{
 
   private storage: any; //variable para guardar la sesión del usuario en el navegador
-  private isLogged: boolean;
+  //private isLogged: boolean;
   private usuario: Usuario;
 
 
   constructor() { 
     console.trace('UsuarioService constructor');
     this.storage = window.sessionStorage;
-    this.isLogged = false;
+    //this.isLogged = false;
     this.usuario = undefined; 
   }//fin constructor
 
@@ -23,13 +23,12 @@ export class UsuarioService implements IUsuarioService{
   estaLogeado(): boolean {
     console.trace('UsuarioService estaLogeado');
 
-    if( this.storage.getItem('isLogged') ){
+    if( this.storage.getItem('usuarioStorage') ){
       return(true);
     }else{
       return(false);
     }
-
-    return this.isLogged;
+    //return this.isLogged;
   }//fin estaLogeado
 
 
@@ -52,12 +51,12 @@ export class UsuarioService implements IUsuarioService{
       usuarioBuscar = new Usuario();
       usuarioBuscar.nombre= nombre;
       usuarioBuscar.password = password;
-      usuarioBuscar.id = 99;
-      //marcar que está logeado:
-      this.storage.setItem('isLogged',true); //this.isLogged = true;
+      usuarioBuscar.id = 99; //damos un valor de id cualquiera
+      //marcar que está logeado (pasamos el json a string):
+      this.storage.setItem('usuarioStorage', JSON.stringify(usuarioBuscar) ); //this.storage.setItem('isLogged',true); //this.isLogged = true;
     }else{
       console.trace('usuario NO encontrado');
-      this.storage.setItem('isLogged',false); //this.isLogged = false;
+      this.storage.removeItem('usuarioStorage'); //this.storage.setItem('isLogged',false); //this.isLogged = false;
     }
 
     return usuarioBuscar; 
@@ -67,7 +66,7 @@ export class UsuarioService implements IUsuarioService{
 
   cerrarSesion() {
     console.trace('UsuarioService cerrarSesion');
-    this.storage.removeItem('isLogged'); //this.isLogged = false;
+    this.storage.removeItem('usuarioStorage'); //this.isLogged = false;
   }
 
   
