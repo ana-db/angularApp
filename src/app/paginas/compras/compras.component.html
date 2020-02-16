@@ -2,7 +2,7 @@
 
     <!-- listado -->
     <div class="col">
-        <app-listado (pasameFrutaEvento)="recogerEvento($event)"></app-listado>
+        <app-listado [frutas]="frutas" (pasameFrutaEvento)="recogerEvento($event)"></app-listado>
     </div>
 
     <!-- detalle -->
@@ -11,3 +11,15 @@
     </div>
 
 </div>
+
+<!-- 
+    Ver listado.component.ts:
+    
+    (pasameFrutaEvento)="recogerEvento($event)"
+    @Output() pasameFrutaEvento = new EventEmitter();
+    es un evento de tipo Output y se expresa con ()
+
+    [frutas]="frutas"
+    @Input() frutas = Array<Fruta>();
+    es un evento de tipo Input y se expresa con []
+-->

@@ -9,9 +9,20 @@ import { Fruta } from 'src/app/model/frutas.model';
 export class ComprasComponent implements OnInit {
 
   frutaSeleccionada: Fruta;
+  frutas: Array<Fruta>;
 
   constructor() {
+
     this.frutaSeleccionada = new Fruta();
+
+    // incializar array de frutas
+    this.frutas = [];
+
+    // datos hardcodeadeos, TODO llamar a un servicio ngOnInit
+    this.frutas.push( new Fruta('pera') );
+    this.frutas.push( new Fruta('manzana') );
+    this.frutas.push( new Fruta('Aguacate') );
+    
    }
 
   ngOnInit() {

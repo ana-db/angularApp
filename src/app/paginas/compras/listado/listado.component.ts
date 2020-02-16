@@ -9,10 +9,10 @@ import { Fruta } from 'src/app/model/frutas.model';
 })
 export class ListadoComponent implements OnInit {
 
-  //@Input() frutas = Array<Fruta>;
+  @Input() frutas = Array<Fruta>();
   @Output() pasameFrutaEvento = new EventEmitter();
 
-  frutas: Array<Fruta>;
+  //frutas: Array<Fruta>;
   frutaSeleccionada: Fruta;
 
 
@@ -20,9 +20,13 @@ export class ListadoComponent implements OnInit {
     this.frutas = new Array<Fruta>();
     this.frutaSeleccionada = new Fruta();
 
+    /* 
+    esta inicialización la vamos a hacer en el constructor de compras.component.ts
+    para pasarlo como evento de input, @Input() frutas = Array<Fruta>():
     this.frutas.push( new Fruta('pera') );
     this.frutas.push( new Fruta('manzana') );
     this.frutas.push( new Fruta('aguacate') );
+    */
   }
 
   ngOnInit() {
@@ -38,7 +42,7 @@ export class ListadoComponent implements OnInit {
   // Cuando se lance el evento click en la plantilla llamaremos a este método
   lanzar(event, fruta){
     // Usamos el método emit
-    console.debug('ListadoComponent seleccionarFruta');
+    console.debug('ListadoComponent lanzar evento al padre');
     this.frutaSeleccionada = fruta;
     this.pasameFrutaEvento.emit( this.frutaSeleccionada );
   }
