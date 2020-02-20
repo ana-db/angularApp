@@ -273,16 +273,64 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 		- Carpeta node_modules: carpeta donde npm va colocando todas las dependencias del proyecto, es decir, el código de todas las
 			librerías o componentes que estemos usando para basarnos en el desarrollo de una aplicación. Por ejemplo,
 			el propio Angular es una dependencia
-		- Carpeta e2e: para pruebas endo to end
+		- Carpeta src: Es la carpeta donde están las fuentes del proyecto. Esta carpeta es la que usaremos para desarrollar la
+				aplicación y donde iremos colocando componentes y otro tipo de artefactos necesarios para poner en marcha nuestras ideas.
+				- Es la carpeta más interesante para ti como desarrollador, ya que es el lugar donde colocarás el código
+				fuente de tu proyecto. En realidad más en concreto la carpeta "app" que encontrarás dentro de "src" es
+				donde tienes que programar tu aplicación. Observarás que ya viene con diversos contenidos, entre otras
+				cosas el index.html que debe servir como página de inicio. No obstante, no es exactamente el directorio raíz
+				de publicación, porque al desplegar el proyecto los resultados de compilar todos los archivos se llevarán a la
+				carpeta "dist".
+				En la carpeta src es donde vas a realizar todo tu trabajo como desarrollador.
+				- Verás además varios archivos .ts, que son código fuente TypeScript. Como quizás sepas, los archivos .ts
+				solo existen en la etapa de desarrollo, es decir, en el proyecto que el navegador debe consumir no
+				encontrarás archivos .ts, básicamente porque el navegador no entiende TypeScript. Esos archivos son los
+				que se compilarán para producir el código .js que sí entienda el navegador.
+		- Carpeta e2e: para pruebas end to end
+		- dist: Es la versión de tu aplicación que subirás al servidor web para hacer público el proyecto. En dist aparecerán todos los archivos 
+			que el navegador va a necesitar y nunca código fuente en lenguajes no interpretables por él. (Observa que no hay archivos .ts dentro de dist).
+
 	- Archivo app.module.ts
+		- módulo principal de la aplicación
+		- Import de nuestro componente raíz --> import { AppComponent } from './app.component';
+		- Decorador @NgModule
+			Los decoradores son algo que viene directamente otorgado por TypeScript. Permiten asignar metadata a funciones, clases u otras cosas. 
+			Las funciones decoradoras tienen un nombre y las usamos para asignar esos datos, que podrían modificar el comportamiento de aquello que se está decorando.
+
 	- Alterando el código de nuestro componente
+
+		<h1>
+			{{title}}
+		</h1>
+		<p [hidden]="!visible">
+			Adiós
+		</p>
+		<button (click)="decirAdios()">Decir adiós</button>
+
+		En este HTML tenemos:
+		- expresión, entre llaves dobles, que permite volcar el contenido de propiedades del componente. 
+		- uso de una propiedad de un elemento, como es "hidden", entre corchetes (nuevo en Angular2). 
+		- declaración de un evento "click" que se coloca entre parénteis.
+
 	- Piezas declarables en una vista
-		- propiedad, Expresión, Binding, evento
+		- Propiedad: Cualquier valor que podemos asignar por medio de un atributo del HTML. Ese elemento puede ser simplemente un atributo del HTML 
+			estándar, un atributo implementado mediante el propio Angular 2 o un atributo personalizado, creado para un componente en específico.
+		- Expresión: Es un volcado de cualquier información en el texto de la página, como contenido a cualquier etiqueta. 
+			La expresión es una declaración que Angular procesará y sustituirá por su valor, pudiendo realizar sencillas operaciones.
+		- Binding: Es un enlace entre el modelo y la vista. Mediante un binding si un dato cambia en el modelo, ese cambio se representa en la vista.
+			Pero además en Angular se introduce el "doble binding", por el cual si un valor se modifica en la vista, 
+			también viaja hacia el modelo. Con la novedad en Angular (2 en adelante) que el doble binding es opcional.
+		- Evento: es un suceso que ocurre y para el cual se pueden definir manejadores, que son funciones que se ejecutarán como respuesta a ese suceso
+
 	- Ejemplos de sintaxis utilizada en vistas de Angular 2
 		- Propiedades
+			[hidden]="!visible", [class]="clase", [href]="enlace"
+		- Expresiones
+			{{title}}, href="{{enlace}}"
+		- Eventos
+			<button (click)="decirAdios()">Decir adiós</button>
 		- Doble binding: el valor está en los 2 sitios, modelo y vista
 			¿Cómo te llamas? <input type="text" [(ngModel)]="quien"> --> ese quien 
-
 
 
 
@@ -290,6 +338,14 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 
 - Flujo de la información de la vista al modelo y modelo a vista
 	- Estructura de angular MVVM: Modelo Vista - Vista Modelo --> Modelo: .ts o controlador, Vista: html
+	1. Las propiedades tienen un flujo desde el modelo a la vista. Una información disponible en el modelo se puede asignar como valor en un elemento 
+		del HTML mediante una propiedad, usando la notación corchetes. Por ej: [propiedad]
+	2. Las expresiones también viajan desde el modelo a la vista. La diferencia de las propiedades es que en este caso las usamos como contenido 
+		de un elemento y además que se expresan con dobles llaves. Por ej: {{expresión}}
+	3. El binding (a dos sentidos, o doble binding) lo expresamos entre corchetes y paréntesis. 
+		En este caso la información fluye en ambos sentidos, desde el modelo a la vista y desde la vista al modelo. Por ej: [(ngBind)]
+	4. Los eventos no es que necesariamente hagan fluir un dato, pero sí se considera un flujo de aplicación, en este caso de la vista al modelo, 
+		ya que se originan en la vista y generalmente sirven para ejecutar métodos que acabarán modificando cosas del modelo. Por ej: (evento)
 	
 	
 -------------------------------------------------------------------
@@ -301,8 +357,8 @@ Date: 2020-02-04T08:31:05.717Z - Hash: 06f190c2d3e45465a52c - Time: 55728ms
 	- una directiva es una propiedad de la etiqueta/atributo que lo lleva
 	- *ngIf, *ngFor, *ngSwitch son ejemplos de directivas
 	- 3 tipos: 
-		- Components: son directivas con una plantilla de html.
-		- Estructurales: cambian el DOM añdiendo o removiendo elementos, por jemplo *ngIf.
+		- Components: son directivas con una plantilla de html. Un componente y una directiva son prácticamente lo mismo
+		- Estructurales: cambian el DOM añadiendo o removiendo elementos, por jemplo *ngIf.
 		- Attribute directive: cambian la apariencia de un elemento del DOM, por ejemplo NgStyle. --> hidden, disabled
 
 	- ¿Cómo creo una directiva? 
@@ -524,6 +580,21 @@ comentario github con todo lo que hemos hecho hasta ahora: privado con guarda pa
 
 - Input y Output en Angular
 
+	- objetivo: interacción entre componentes
 	- Los inputs nos permiten pasar valores desde el componente “padre” que utiliza dentro del el otro componente y así intercambiar datos entre estos dos componentes. 
 	- utilizando el decorador @Input recibo los datos desde el otro componente 
+	- También podemos pasarle datos del componente “hijo” al componente padre que lo utiliza con Output.
 
+	- Ver ejemplo en proyecto angularApp página compras:
+
+		Ver listado.component.ts:
+    		(pasameFrutaEvento)="recogerEvento($event)"
+    		@Output() pasameFrutaEvento = new EventEmitter();
+    		es un evento de tipo Output y se expresa con ()
+    
+		[frutas]="frutas"
+    		@Input() frutas = Array<Fruta>();
+    		es un evento de tipo Input y se expresa con []
+
+
+Hasta aquí hacemos un test de 20 preguntas
