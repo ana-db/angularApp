@@ -598,3 +598,60 @@ comentario github con todo lo que hemos hecho hasta ahora: privado con guarda pa
 
 
 Hasta aquí hacemos un test de 20 preguntas
+
+
+-------------------------------------------------------------------
+
+
+21/02/2020
+
+Variables del entorno con Angular
+
+	- ng build --prod --> en carpeta dist genera todos los archivos comprimidos (css, ts...)
+	- Diferente valor en cada entorno
+		mismos datos pero dieferntes valores según estemos en desarrollo o producción
+		se guardan en:
+			environment.prod.ts --> coge el fichero para producción
+			environment.ts --> coge el fichero para local host
+			con estos 2 ficheros configurar variables distintas en cada caso para desarrollo y produccion (*)
+	- Las variables no serán tomadas en cuenta si solo haces un ng build; debes hacer un ng build --prod para crear un “build de producción”
+	
+
+
+--
+
+
+html de la lista:
+<a [routerLink]="['/libro',libro.id]">pincha para ir al detalle</a>
+
+
+página detalle:
+inyectar en el constructor router y service
+en ngOnInit -->     this.route.params.subscribe( params => this.idLibro = params.pIdLibro ); //params devuelve un observable --> nos tenemos que suscribir
+
+
+ng new UF1644-Ana
+
+ng g c paginas/inicio
+ng g c componentes/navbar
+
+ng g c paginas/detalle
+ng g c paginas/formulario
+
+--
+
+* 
+Angular Subir a Producción --> ng build --prod
+trazas necesarias en produccion --> En prodcucción se suele cambiar a INFO o WARN
+carpeta ficheros de angular que desarrollamos --> carpeta src
+ficheros para entorno desarrollo angular --> ts y scss
+carpeta dist angular produccion
+carpetas como "test" o "dist", para realizar el test o
+para almacenar los archivos listos para producción.
+acceso a info necesaria en angular --> servicio o provider
+ficheros de java para ejecutrase en desarrollo -> 
+ficheros de java para ejecutrase en produccion->
+ficheros para entorno produccion angular --> 
+servidor para desarrollar en angular -->
+carpeta donde se despliegan las apps dentro de tomcat -->
+sistema de trazas de java cunado la app está publicada -->
