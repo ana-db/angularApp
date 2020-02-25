@@ -15,6 +15,9 @@ comandos:
 	
 	- Could not find module "@angular-devkit/build-angular" from... (angularFrutas 08/02/2020) --> npm install --save-dev @angular-devkit/build-angular	
 
+	- Subir a producción: ng build --prod
+	- Subir a producción con una base url: ng build --prod --base-href=/pokemon-angular-ana/
+
 -------------------------------------------------------------------
 
 
@@ -27,7 +30,7 @@ comandos:
 	- reduce: devuelve un objeto a partir del array inicial, es decir, reduce los datos a uno sólo
 	- find: busca el 1er objeto que cumple una condición
 
-	ver imagen google: map filter find reduce
+	ver imagen: map filter find reduce
 
 	- Un map de lista a lista
 		https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Objetos_globales/Array/map
@@ -63,7 +66,7 @@ comandos:
 	- Pagina oficial: http://www.typescriptlang.org/docs/home.html
 	- Repositorio en GITHUB: https://github.com/Microsoft/TypeScript
 
-	- se puede usar para desarrollar aplicaciones JavaScript que se ejecutarán en el cliente o en el servidor (Node.js), o tambien para frotend (Angular).
+	- se puede usar para desarrollar aplicaciones JavaScript que se ejecutarán en el cliente o en el servidor (Node.js), o también para frontend (Angular).
 	- se trata de un superconjunto de Javascript, es decir, amplía Javascript con una nueva sintaxis que añade, entre otras cosas, el tipado estático opcional, genéricos, decoradores y elementos de POO como interfaces o property accessors.
 	- TypeScript compila código JavaScript que se ejecuta en cualquier navegador, host, sistema operativo o motor de JavaScript que admita ECMAScript 3 (o más reciente). --> ES6 o ECMAScript2015
 
@@ -553,12 +556,15 @@ comentario github con todo lo que hemos hecho hasta ahora: privado con guarda pa
 
 - sessionStorage
 	- https://developer.mozilla.org/es/docs/Web/API/Window/sessionStorage
-	- La propiedad sessionStorage permite acceder a un objeto Storage asociado a la sesión actual. La propiedad sessionStorage es similar a localStorage, la única diferencia es que la información almacenada en localStorage no posee tiempo de expiración, por el contrario la información almacenada en sessionStorage es eliminada al finalizar la sesion de la página. La sesión de la página perdura mientras el navegador se encuentra abierto, y se mantiene por sobre las recargas y reaperturas de la página. Abrir una página en una nueva pestaña o ventana iniciará una nueva sesión, lo que difiere en la forma en que trabajan las cookies de sesión.
+	- La propiedad sessionStorage permite acceder a un objeto Storage asociado a la sesión actual. 
+	La propiedad sessionStorage es similar a localStorage, la única diferencia es que la información almacenada en localStorage no posee tiempo de expiración, 
+	por el contrario la información almacenada en sessionStorage es eliminada al finalizar la sesion de la página. 
+	La sesión de la página perdura mientras el navegador se encuentra abierto, y se mantiene por sobre las recargas y reaperturas de la página. 
+	Abrir una página en una nueva pestaña o ventana iniciará una nueva sesión, lo que difiere en la forma en que trabajan las cookies de sesión.
 
 	- Sintaxis:
 		sessionStorage.setItem('key', 'value'); // Almacena la información en sessionStorage
 		var data = sessionStorage.getItem('key'); // Obtiene la información almacenada desde sessionStorage
-
 
 
 - Preparando filtro por habilidad pokemon con checkbox:
@@ -605,11 +611,14 @@ Hasta aquí hacemos un test de 20 preguntas
 
 21/02/2020
 
-Variables del entorno con Angular
+- Variables del entorno con Angular
 
+	- en modo producción, los archivos JS de Angular serán servidos en la misma URL que los de PHP, así que la URL base es: .
+	En cambio, en modo desarrollo, Angular es servido en una URL distinta y la URL es: localhost/mascotas_angular
+	Hay que cambiar esto para que al compilar con la cli usando ng build --prod se cambie el valor automáticamente.
 	- ng build --prod --> en carpeta dist genera todos los archivos comprimidos (css, ts...)
 	- Diferente valor en cada entorno
-		mismos datos pero dieferntes valores según estemos en desarrollo o producción
+		mismos datos pero diferentes valores según estemos en desarrollo o producción
 		se guardan en:
 			environment.prod.ts --> coge el fichero para producción
 			environment.ts --> coge el fichero para local host
@@ -617,18 +626,16 @@ Variables del entorno con Angular
 	- Las variables no serán tomadas en cuenta si solo haces un ng build; debes hacer un ng build --prod para crear un “build de producción”
 	
 
+hasta aquí hacemos un test de 20 preguntas
 
 --
-
 
 html de la lista:
 <a [routerLink]="['/libro',libro.id]">pincha para ir al detalle</a>
 
-
 página detalle:
 inyectar en el constructor router y service
-en ngOnInit -->     this.route.params.subscribe( params => this.idLibro = params.pIdLibro ); //params devuelve un observable --> nos tenemos que suscribir
-
+en ngOnInit --> this.route.params.subscribe( params => this.idLibro = params.pIdLibro ); //params devuelve un observable --> nos tenemos que suscribir
 
 ng new UF1644-Ana
 
@@ -640,18 +647,51 @@ ng g c paginas/formulario
 
 --
 
-* 
-Angular Subir a Producción --> ng build --prod
-trazas necesarias en produccion --> En prodcucción se suele cambiar a INFO o WARN
-carpeta ficheros de angular que desarrollamos --> carpeta src
-ficheros para entorno desarrollo angular --> ts y scss
-carpeta dist angular produccion
-carpetas como "test" o "dist", para realizar el test o
-para almacenar los archivos listos para producción.
-acceso a info necesaria en angular --> servicio o provider
-ficheros de java para ejecutrase en desarrollo -> 
-ficheros de java para ejecutrase en produccion->
-ficheros para entorno produccion angular --> 
-servidor para desarrollar en angular -->
-carpeta donde se despliegan las apps dentro de tomcat -->
-sistema de trazas de java cunado la app está publicada -->
+* Producción y variables de entorno:
+- Angular Subir a Producción --> ng build --prod
+- cuando subimos a producción una app de angular, se genera 1 fichero javascript para todo el typescript
+- trazas necesarias para una aplicación de java en produccion --> En producción se suele cambiar a INFO o WARN
+- carpeta en la que se guardan los ficheros de angular que desarrollamos --> carpeta src
+- carpeta en la que se guardan los ficheros de producción de angular --> carpeta dist
+	carpetas como "test" o "dist", para realizar el test o para almacenar los archivos listos para producción.
+- acceso a info necesaria en angular --> servicio o provider
+- ficheros de java para ejecutarse en desarrollo --> .java
+- ficheros de java para ejecutarse en produccion --> .class
+- ficheros para entorno desarrollo angular --> ts y scss
+- ficheros para entorno produccion angular --> javascripts y css
+- servidor para desarrollar en angular --> node js
+- carpeta donde se despliegan las apps dentro de tomcat --> webapp
+- sistema de trazas de java cuando la app está publicada --> log4j
+- es aconsejable usar trazas/logs cuando se publica una aplicación
+- ¿se pueden poner breakpoints en una aplicación de angular en producción?
+- ¿se pueden poner breakpoints en una aplicación de java en producción?
+- en angular no se necesita escribir sentencias SQL
+- para acceder a la info necesaria en angular se usan servicios o providers
+- gracias a las variables del entorno, en angular podemos configurar distintas variables en la carpeta environment
+	distinguiendo los casos de desarrollo y producción
+- en java también podemos hacer esta diferencia entre las variables de desarrollo y producción, 
+	pero las guardamos en la carpeta src/resources
+
+
+-------------------------------------------------------------------
+
+
+25/02/2020
+
+UF1644 - Canales de distribución y publicación utilizados en los sistemas gestores de información (21/02/2020)
+
+en el test de este módulo han entrado preguntas sobre producción java/angular y variables de entorno
+
+- CheckStyle instalación
+	- Checkstyle es una herramienta de desarrollo que ayuda a los programadores a escribir código Java adecuándose a estándares de codificación 
+	establecidos, facilitando para ello la automatización del proceso de chequeo del código generado.
+	- Checkstyle incorpora las recomendaciones de Sun sobre el estilo de código, pero estas reglas pueden ser redefinidas e 
+	incluso creadas completamente desde cero por el usuario, lo que convierte este plug-in en adaptable al estilo de codificación interno 
+	de nuestro entorno, sea cual sea.
+
+- PMD
+	- PMD es una herramienta que comprueba que nuestra aplicación cumpla una serie de reglas que nos ayudan a obtener un código más elegante, 
+	sencillo y mantenible. 
+	- Estas reglas se agrupan por conjuntos y pueden ser reglas de complejidad, como que la complejidad ciclomática no sea demasiado alta; 
+	de diseño, como no usar interfaces como meros contenedores de constantes; de optimización, como procurar usar ArrayList en lugar de Vector; etc.
+
