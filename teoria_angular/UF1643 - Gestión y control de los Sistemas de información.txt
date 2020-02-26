@@ -695,3 +695,51 @@ en el test de este módulo han entrado preguntas sobre producción java/angular y 
 	- Estas reglas se agrupan por conjuntos y pueden ser reglas de complejidad, como que la complejidad ciclomática no sea demasiado alta; 
 	de diseño, como no usar interfaces como meros contenedores de constantes; de optimización, como procurar usar ArrayList en lugar de Vector; etc.
 
+-------------------------------------------------------------------
+
+26/02/2020
+
+- Fixing deep linking issue – Deploying angular application on Tomcat server
+
+	- Objetivo: Soluciar problemas de construcción de enlaces en angular
+
+	- Angular es client side y sigue la estructura SPA (Single Page Application), por lo tanto, tenemos que realizar una configuración para permitir
+	acceder a un recurso determinado introduciendo manualmente la URI del mismo,
+	Si realizamos una nueva petición a cualquier URI que no sea la raiz del proyecto, nos dará un error 404 porque no encuentra el recurso solicitado.
+	
+	- Para reparar este fallo, tenemos que configurar el servidor de tomcat para redirigir los links a nuestra página proncipal.
+	Es necesario seguir los siguientes pasos en el servidor:
+
+	1- Configurar el archivo server.xml (RewriteValve)
+		Dentro de la etiqueta <host> del fichero de configuración server.xml tenemos que escribir la siguiente línea:
+		<Valve className="org.apache.catalina.valves.rewrite.RewriteValve" />
+
+	2- Escribir el RewriteValve en el fichero rewrite.config
+		Para esto creamos un fichero llamado rewrite.config dentro de /conf/catalina/localhost
+		En ese fichero escribimos las siguientes líneas:
+		RewriteCond %{REQUEST_PATH} !-f
+		RewriteRule ^/nombre-proyecto-angular/(.*) /nombre-proyecto-angular/index.html
+
+	(que no se nos olvide añadir una ruta que nos lleve al InicioComponent en nuestra aplicación de angular, para que si hay algún error,
+	el usuario sea redireccionado a esa página:
+	en	app-routing.module.ts	añadimos   {path: '**', component: InicioComponent} 
+	)
+
+- Activar CORS en Tomcat
+	Además de activar CORS en nuestros controladores, cuando subimos un proyecto a producción también debemos activar CORS en Tomcat.
+	Para ello debemos meter las siguientes lineas en este fichero $CATALINA_BASE/conf/web.xml y reiniciar tomcat
+
+<filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern> /* </url-pattern>
+</filter-mapping>
+
+
+
+
+
+
